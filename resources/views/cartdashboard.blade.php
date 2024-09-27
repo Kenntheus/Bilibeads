@@ -47,9 +47,6 @@ rel="stylesheet">
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{url('customize')}}">Customize</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('about')}}" data-after="About">About</a>
-                </li>
             </ul>
             <form class="form-inline" action="{{ url('search') }}" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

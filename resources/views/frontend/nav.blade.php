@@ -29,12 +29,10 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="/customize">Customize</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/about" data-after="About">About</a>
-                </li>
             </ul>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    style="background-color: #6F4E37; color: #FED8B1; border: 2px solid #A67B5B;">
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -48,30 +46,30 @@
                     </a>
                 </li>
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('login') }}">Sign In</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('register') }}">Sign Up</a>
-                        </li>
-                    @endif
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('login') }}">Sign In</a>
+                </li>
+                @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('register') }}">Sign Up</a>
+                </li>
+                @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); this.closest('form').submit();"
-                                    class="dropdown-item">Logout</a>
-                            </form>
-                        </div>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                                class="dropdown-item">Logout</a>
+                        </form>
+                    </div>
+                </li>
                 @endguest
             </ul>
         </div>

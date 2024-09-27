@@ -1,4 +1,4 @@
-@extends('dashboard')
+<!-- @extends('dashboard')
 
 <style>
     .content-wrapper {
@@ -125,11 +125,11 @@
     </section>
 </div>
 
-<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+Bootstrap JS and Popper.js (required for Bootstrap) -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <div class="bottom">
     {{ View::make("frontend.footer") }}
-</div>
+</div> -->

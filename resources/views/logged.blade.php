@@ -42,9 +42,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/customize">Customize</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/#About" data-after="About">About</a>
-                        </li>
                     </ul>
                     <form class="form-inline mx-auto">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

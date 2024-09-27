@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.css">
 <link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-rel="stylesheet"
-/>
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet" />
 <link
-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet">
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
@@ -46,13 +46,13 @@ rel="stylesheet">
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{url('customize')}}">Customize</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('about')}}" data-after="About">About</a>
-                </li>
             </ul>
             <form class="form-inline" action="{{ url('search') }}" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: #fcfafa;">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    style="background-color: #ffffff; color: #333; border: 2px solid #333;">
+
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                    style="background-color: #333; border-color: #ffffff; color: #ffffff;">Search</button>
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -66,47 +66,49 @@ rel="stylesheet">
                     </a>
                 </li>
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('login') }}">Sign In</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('register') }}">Sign Up</a>
-                        </li>
-                    @endif
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('login') }}">Sign In</a>
+                </li>
+                @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('register') }}">Sign Up</a>
+                </li>
+                @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); this.closest('form').submit();"
-                                    class="dropdown-item">Logout</a>
-                            </form>
-                        </div>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                                class="dropdown-item">Logout</a>
+                        </form>
+                    </div>
+                </li>
                 @endguest
             </ul>
         </div>
     </div>
 </nav>
+
 <body>
 
-    
-    
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+</script>
+
 </html>
