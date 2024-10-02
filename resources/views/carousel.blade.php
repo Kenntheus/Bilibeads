@@ -22,7 +22,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 px-5">
 
                 <h1 class="font-weight-light">Bilibeads: Fashion Accessories</h1>
                 <p>
@@ -58,21 +58,28 @@
         @endif
         @foreach ($products->chunk(6) as $chunkedProducts)
             @foreach ($chunkedProducts as $category => $categoryProducts)
-                <div class=" border border-4" style="margin-top: 5%;  border-style: solid;">
+                <div class="border border-4" style="margin-top: 5%;  border-style: solid;">
                     <div class="category-border" >
                         <h1 class="text-center"><span class="category">{{ ucfirst($category) }}</span></h1>
-                        <div class=" row mx-auto">
+                        <div class="row mx-auto">
                             @foreach ($categoryProducts as $product)
-                                <div class="card mx-auto mt-4 mb-4">
+                                <div class="card mt-3 mb-3">
                                     <div class="text-center tumb">
-                                        <img src="{{ asset('products/' . $product->gallery) }}" class="img-fluid"
+                                        <img src="{{ asset('products/' . $product->gallery) }}" class="img-fluid p-3"
                                             alt="{{ $product->title }}">
                                     </div>
                                     <div class="card-body details">
-                                        <h4>{{ $product->title }}</h4>
+                                        <h4 class="text-center">{{ $product->title }}</h4>
                                         {{-- <p>{{ $product->description }}</p> --}}
                                         <div class="position-relative bottom-details">
-                                            <p class="card-text"><strong>Price: {{ $product->price }}Pesos</strong></p>
+                                            <div class="row mb-2">
+                                                <div class="col text-start">
+                                                    <strong>Price:</strong>
+                                                </div>
+                                                <div class="col text-end card-text">
+                                                    <strong>₱{{ $product->price }}</strong>
+                                                </div>
+                                            </div>
                                             <div class="links">
                                                 <form action="{{ url('addcart', $product->id) }}" method="POST">
                                                     @csrf
@@ -81,7 +88,7 @@
 
                                                     <br>
                                                     <input type="hidden" name="product_id" >
-                                                    <button class="btn btn-primary">Add to Cart</button>
+                                                    <button class="btn" style="background-color: #bfdaa4; width: 100%;">Add to Cart</button>
 
                                                     {{-- wala pang function sa buy --}}
                                                    
@@ -90,7 +97,7 @@
                                                 <form action="{{ url('addbuy', $product->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="product_id" value="Add Cart">
-                                                <button class="btn btn-primary">Buy</button>
+                                                <button class="btn" style="background-color: #bfdaa4; width: 100%;">Buy</button>
                                             </form>
                                             </div>
                                         </div>

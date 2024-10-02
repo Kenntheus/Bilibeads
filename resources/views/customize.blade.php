@@ -1,18 +1,18 @@
-<!-- @extends('dashboard')
+ @extends('dashboard')
 
 <div class="container" style="margin-top: 10%">
     <div class="border p-4 selected-bead-container" >
-        Buttons for clearing and adding to cart -->
+        {{-- Buttons for clearing and adding to cart --> --}}
         
     </div>
 </div>
 
-<!-- <section id="customize" class="product-section">
+ <section id="customize" class="product-section">
     <div class="container mt-4 mb-4" >
         <div class="border p-4" >
-            <div class="row"> -->
-                <!-- Bracelet Product 1 -->
-                <!-- @foreach ($beads as $bead)
+            <div class="row">
+                {{-- -->Bracelet Product 1  --}}
+                 @foreach ($beads as $bead)
                     <div class="col mb-4">
                         <a href="#" class="bead-link" data-bead="{{ $bead->bead }}">
                             <div class="">
@@ -115,4 +115,4 @@
             alert('Adding beads to cart...');
         });
     });
-</script> -->
+</script>

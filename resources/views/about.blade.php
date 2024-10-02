@@ -1,4 +1,4 @@
-<!-- @extends('dashboard')
+ @extends('dashboard')
 
 <style>
     .content-wrapper {
@@ -12,12 +12,12 @@
 
     
     .text-color-custom {
-        color: #6b72Be;
+        color: #505C45;
     }
 
     .team-member-card {
         width: 300px;
-        height: 450px; 
+        height: 360px; 
         border: 1px solid #ccc;
         border-radius: 10px;
         padding: 10px;
@@ -30,6 +30,7 @@
     .team-member-img {
         width: 100%;
         border-radius: 10px;
+        
     }
 
     .team-member-details {
@@ -44,11 +45,14 @@
     }
     .team-member-card:hover {
         transform: translateY(-10px);
+        
+    border: 2px solid #bfdaa4;
     }
 
-    .team-member-details h5 {
+    .team-member-details {
         font-size: 18px; 
-        margin-bottom: 5px; 
+        margin-bottom: 0px; 
+        
     }
 
     .team-member-details p {
@@ -60,64 +64,64 @@
 
 <div class="container text-center content-wrapper">
     <h1 class="display-4 text-color-custom">About Bilibeads</h1>
-    <p class="lead">Exploring, creating, and customizing vibrant bead accessories.</p>
+    <p class="lead">Exploring and customizing vibrant bead accessories.</p>
 
     <div class="container">
         <p>
-            Bilibeads is committed to providing a comprehensive platform where bead enthusiasts can explore, purchase,
+            Bilibeads is committed to providing a comprehensive platform where bead enthusiasts can explore,<br>purchase,
             and unleash their creativity through a wide range of bead-based products and craft ideas.
         </p>
 
         <h2 class="text-color-custom">Why Bilibeads?</h2>
         <p>
-            At Bilibeads, we believe in the power of self-expression and individuality. Our platform is designed to
+            At Bilibeads, we believe in the power of self-expression and individuality. Our platform is designed<br>to
             cater to the diverse tastes and preferences of those who appreciate the artistry of bead accessories.
         </p>
 
         <h2 class="text-color-custom">Join Us in the Bead Journey</h2>
         <p>
-            Whether you're a seasoned bead enthusiast or just starting your journey, Bilibeads welcomes you to explore
+            Whether you're a seasoned bead enthusiast or just starting your journey, Bilibeads welcomes you<br>to explore
             the vibrant world of bead products and create accessories that reflect your unique style.
         </p>
     </div>
 
-    <h1 class="text-center text-color-custom">Meet the Team</h1>
+    <h1 class="text-center text-color-custom pt-5">Meet the Team</h1>
     <section class="about">
         <div class="container">
             <div class="main">
                 <div class="team-member-card">
                     <img src="faker.png/img" alt="Team Member 1" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>Shanderick Aquino</h5>
-                        <p>Backend Web Developer</p>
+                        <h5>Member Name</h5>
+                        <p>Project Manager</p>
                     </div>
                 </div>
                 <div class="team-member-card">
-                    <img src="path_to_your_image2.jpg" alt="Team Member 2" class="team-member-img">
+                    <img src="img/me.jpg" alt="Team Member 2" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>Mark Dale Elroy E. Bagui</h5>
-                        <p>Fullstack Developer</p>
+                        <h5>Jorlan Prado</h5>
+                        <p>Front-End Developer</p>
                     </div>
                 </div>
                 <div class="team-member-card">
-                    <img src="pfp1.png" alt="Team Member 2" class="team-member-img">
+                    <img src="img/gelo.jpg" alt="Team Member 2" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>Tyron Japeth M. Bianan</h5>
-                        <p>Frontend Developer</p>
+                        <h5>Mark Gelo Rioflorido</h5>
+                        <p>Front-End Developer</p>
                     </div>
                 </div>
                 <div class="team-member-card">
-                    <img src="path_to_your_image2.jpg" alt="Team Member 2" class="team-member-img">
+                    <img src="img/jean.jpg" alt="Team Member 2" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>John Lloyd Romero</h5>
-                        <p>Frontend Mobile Developer</p>
+                        <h5>Jean Collado</h5>
+                        <p>Back-End Developer</p>
                     </div>
                 </div>
                 <div class="team-member-card">
-                    <img src="path_to_your_image2.jpg" alt="Team Member 2" class="team-member-img">
+                    <img src="img/james.jpg" alt="Team Member 2" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>Jhon R-neil C. Ebuan</h5>
-                        <p>Backend Mobile Developer</p>
+                        <h5>James Andrei Ocampo</h5>
+                        <p>Back-End Developer</p>
                     </div>
                 </div>
             </div>
@@ -125,11 +129,11 @@
     </section>
 </div>
 
-Bootstrap JS and Popper.js (required for Bootstrap) -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+{{-- Bootstrap JS and Popper.js (required for Bootstrap) --> --}}
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <div class="bottom">
     {{ View::make("frontend.footer") }}
-</div> -->
+</div>
