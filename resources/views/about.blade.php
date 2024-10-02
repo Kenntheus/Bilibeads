@@ -90,9 +90,9 @@
         <div class="container">
             <div class="main">
                 <div class="team-member-card">
-                    <img src="faker.png/img" alt="Team Member 1" class="team-member-img">
+                    <img src="img/ken.jpg" alt="Team Member 1" class="team-member-img">
                     <div class="team-member-details">
-                        <h5>Member Name</h5>
+                        <h5>Martheus Kenn Banaag</h5>
                         <p>Project Manager</p>
                     </div>
                 </div>
