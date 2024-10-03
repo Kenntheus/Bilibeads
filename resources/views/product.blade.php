@@ -9,10 +9,10 @@
         @endif
         @foreach ($products->chunk(4) as $chunkedProducts)
             @foreach ($chunkedProducts as $category => $categoryProducts)
-                <div class="col border border-2" style="margin-top: 5%">
+                <div class="col" style="margin-top: 5%">
                     <div class="category-border">
                         <h1 class="text-center"><span class="category">{{ ucfirst($category) }}</span></h1>
-                        <div class="row mx-auto ">
+                        <div class="row mx-auto">
                             @foreach ($categoryProducts as $product)
                                 <div class="card mx-1 mt-3 mb-3">
                                     <div class="text-center tumb">

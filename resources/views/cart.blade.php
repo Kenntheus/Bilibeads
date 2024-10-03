@@ -1,4 +1,4 @@
-<!-- @extends('cartdashboard')
+ @extends('cartdashboard')
 
 
     <section class=" h-200" style="background-color: #eee;">
@@ -62,13 +62,13 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="btn btn-primary btn-block btn-lg">Total Price: ${{ $totalPrice }}</h1>
+                            <h1 class="btn btn-block btn-lg" style="background-color: #bfdaa4">Total Price: ${{ $totalPrice }}</h1>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <a href="/checkouts">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg" id="checkout-live-button">Proceed to Pay</button>
+                            <button type="submit" class="btn btn-block btn-lg" style="background-color: #bfdaa4;" id="checkout-live-button">Proceed to Pay</button>
                             </a>
                             {{-- <form action="{{url('checkout')}}">
                                 @csrf
@@ -91,4 +91,4 @@
     
     
 </div>
- -->
+

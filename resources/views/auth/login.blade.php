@@ -7,6 +7,24 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
+<style>
+
+    .hover-effect {
+        background-color: transparent;
+        border: 2px solid #bfdaa4;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        color: black;
+    }
+    
+    .hover-effect:hover {
+        background-color: #bfdaa4;
+        color: white;
+    }
+    
+    </style>
+
 <body>
     <section class="vh-100" style="background-color: #ffffff;">
         <div class="container py-5 h-100">
@@ -44,9 +62,9 @@
                                         </div>
 
                                         <div class="pt-1 mb-4">
-                                            <x-primary-button class="btn btn-primary btn-lg btn-block" type="submit">
+                                            <button class="btn btn-lg btn-block hover-effect" style="width: 100px;" type="submit" >
                                                 {{ __('Login') }}
-                                            </x-primary-button>
+                                            </button>
                                         </div>
 
                                         @if (Route::has('password.request'))

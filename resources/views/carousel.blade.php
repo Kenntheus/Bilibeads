@@ -58,7 +58,7 @@
         @endif
         @foreach ($products->chunk(6) as $chunkedProducts)
             @foreach ($chunkedProducts as $category => $categoryProducts)
-                <div class="border border-4" style="margin-top: 5%;  border-style: solid;">
+                <div style="margin-top: 5%;">
                     <div class="category-border" >
                         <h1 class="text-center"><span class="category">{{ ucfirst($category) }}</span></h1>
                         <div class="row mx-auto">

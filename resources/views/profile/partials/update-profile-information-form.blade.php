@@ -1,5 +1,9 @@
 <section>
     <header>
+        <button>
+            
+        </button>
+
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
         </h2>
@@ -18,13 +22,13 @@
         @csrf
         @method('patch')
         <!-- Profile Picture -->
-        <div class="container">
+        {{-- <div class="container">
             <div class="rounded-md">
                 <button class="rounded-circle bg-gray-200" type="file">
                     <img class="w-24 h-24 rounded-md" src="" height="100" width="100" />
                 </button>
             </div>
-        </div>
+        </div> --}}
         
 
 

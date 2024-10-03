@@ -6,9 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
+<style>
+
+.hover-effect {
+    background-color: transparent;
+    border: 2px solid #bfdaa4;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    color: black;
+}
+
+.hover-effect:hover {
+    background-color: #bfdaa4;
+    color: white;
+}
+
+</style>
 <body>
   @section('content')
-  <section class="vh-100" style="background-color: #ffffff;">
+  <section class="vh-100" style="background-color: #f0ebeb;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-ml-5">
@@ -62,10 +79,12 @@
                         {{ __('Already registered?') }}
                       </a> -->
 
-                  
-                      <x-primary-button class="mb-3 btn btn-primary">
+                      
+                      <button class="mb-3 btn hover-effect" style="width: 100px; height: 50px;">
                           {{ __('Register') }}
-                      </x-primary-button>
+                      </button>
+
+                      
                   </form>
 
                 </div>

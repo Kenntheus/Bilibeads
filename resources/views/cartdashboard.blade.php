@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bilibeads</title>
 </head>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-5S5lGQkDxM5es73cnd0VWnywP4/1XWpPn6u6xRUmD2Gr5rX3HwX9rVSnFd6rd+iJymtiQ4zbCj6Qjy+kLcZgIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="/css/cart.css">
 <link
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 rel="stylesheet"
@@ -18,7 +17,7 @@ rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 rel="stylesheet">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #505C45; padding:15px;">
     <div class="container">
         <a class="navbar-brand text-white" href="/">Bilibeads</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -27,13 +26,13 @@ rel="stylesheet">
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-white" href="/" data-after="Home">Home</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('shop')}}" data-after="shop">Shop</a>
+                    <a class="nav-link text-white" href="{{url('shop')}}" data-after="shop">Products</a>
                 </li>
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
@@ -43,15 +42,15 @@ rel="stylesheet">
                         <a class="dropdown-item" href="{{url('shop')}}" data-after="necklace">Necklace</a>
                         <a class="dropdown-item" href="{{url('shop')}}">Ring</a>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{url('customize')}}">Customize</a>
                 </li>
             </ul>
-            <form class="form-inline" action="{{ url('search') }}" method="GET">
+            {{-- <form class="form-inline" action="{{ url('search') }}" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> --}}
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="/cart" class="nav-link text-white" id="openCart">
@@ -93,6 +92,8 @@ rel="stylesheet">
         </div>
     </div>
 </nav>
+
+
 <body>
 
     

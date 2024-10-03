@@ -10,9 +10,12 @@
 
 <body>
     <link rel="stylesheet" href="/css/style.css">
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #505C45; padding:15px;">
         <div class="container">
-            <a class="navbar-brand text-white" href="/">Bilibeads</a>
+            <a class="navbar-brand text-white" href="/">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

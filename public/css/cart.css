@@ -1,4 +1,4 @@
-body{
+/* body{
     font-family: 'Times New Roman', Times, serif;
 }
 .product{
@@ -17,4 +17,16 @@ body{
 nav{
     background:linear-gradient(to right,#474e68,#6b72Be ) ;
    
+} */
+
+.hover-effect {
+    background-color: transparent;
+    border: 2px solid #bfdaa4;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
 }
+
+.hover-effect:hover {
+    background-color: #bfdaa4;
+}
+
