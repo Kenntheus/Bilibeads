@@ -53,7 +53,7 @@ Route::post('save',[UserController::class,'testdata']);
 
 Route::get('product',[ProductController::class,'product']);
 Route::post('product',[ProductController::class,'add']);
-Route::put('product',[ProductController::class,'update']);
+Route::put('product/{id}',[ProductController::class,'update']);
 Route::delete('product/{id}',[ProductController::class,'delete']);
 Route::get('product/{title}',[ProductController::class,'search']);
 Route::get('test/{category}', [ProductController::class, 'category'])->name('product');

@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class CarouselController extends Controller
 {
     public function index()
-    {
-        $pictures = Carousel::all();
-        $latest_product = Latest::all();
-        $products = Product::all()->groupBy('category');
-        return view('carousel', compact('pictures','latest_product','products'));
-    }
+{
+    $pictures = Carousel::all();
+    
+    // Fetch only the latest 5 products (or adjust the number as needed)
+    $latest_products = Product::latest()->take(5)->get();
+    
+    return view('carousel', compact('pictures', 'latest_products'));
+}
     public function addcart(Request $request, $id){
 
 

@@ -23,7 +23,7 @@
                             <input type="text" name="name" class="form-control" value="{{$user->name}}">
                         </div>
                         <div class="mb-3">
-                            <h4>User Email</h4>
+                            <h4>Email</h4>
                             <input type="text" name="email" class="form-control" value="{{$user->email}}">
                         </div>
 
@@ -36,12 +36,12 @@
 
                         <h2>User Details</h2>
                         <div class="mb-3">
-                            <h4>User Phone No.</h4>
+                            <h4>Phone No.</h4>
                             <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
                         </div>
 
                         <div class="mb-3">
-                            <h4>User Address</h4>
+                            <h4>Address</h4>
                             <input type="text" name="address" class="form-control" value="{{$user->address}}">
                         </div>
 
@@ -51,16 +51,16 @@
 
 
                         <div class="mb-3">
-                            <h4>User Gender</h4>
+                            <h4>Gender</h4>
                             <input type="text" name="address" class="form-control" value="{{$user->gender}}">
                         </div>
 
                         <div class="mb-3">
-                            <h4>User Address</h4>
+                            <h4>Address</h4>
                             <input type="text" name="address" class="form-control" value="{{$user->address}}">
                         </div>
                         <div class="mb-3">
-                            <h4>User Contact No.</h4>
+                            <h4>Contact No.</h4>
                             <input type="text" name="address" class="form-control" value="{{$user->phone}}">
                         </div>
 

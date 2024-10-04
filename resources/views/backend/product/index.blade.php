@@ -2,7 +2,7 @@
 @extends('backend.layouts.app')
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-15S">
 
                 @if (session('message'))
                     <h4 class="alert alert-success">{{ session('message') }}</h4>

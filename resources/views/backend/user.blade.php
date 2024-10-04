@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<div class="container mt-5">
+<div class="container mx-auto" style="margin-top: 250px;">
     <div class="row">
         <div class="col-md-12">
 

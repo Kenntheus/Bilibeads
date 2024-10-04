@@ -1,20 +1,58 @@
 @extends('backend.layouts.app')
-<div class="container mt-5">
-    <div class="card">
 
+<style>
+    .welcome-card {
+        background-color: #505c45;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
 
-        <h3>Features :</h3>
-        <ul>
-            <li>Create CRUD in config file.</li>
-            <li>Manage route prefix and addresses</li>
-            <li>Beautiful UI/UX with AdminMart template</li>
-            <li>Add/remove an admin with command line</li>
-            <li>Manage pagination count</li>
-            <li>Real time validation with <a href="https://github.com/livewire/livewire">Livewire</a></li>
-            <li>Customize every actions in your project</li>
-            <li>A small and beautiful TODO (You disable it in your config)</li>
-            <li>Create a nice and responsive view based on your data in config file for every CRUDs</li>
-            <li>Custom validation based on config file</li>
-        </ul>
+    .welcome-header {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .welcome-text {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .action-buttons {
+        margin-top: 20px;
+    }
+
+    .action-buttons a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 2px solid #bfdaa4;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-buttons a:hover {
+        background-color: #bfdaa4;
+        color: white;
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center pt-5">
+    <div class="welcome-card">
+        <div class="welcome-header">Welcome to the Developer Admin Panel</div>
+        <p class="welcome-text">
+            We're glad to have you here! Use this panel to manage users, products, and system settings. Everything you
+            need to streamline your development process is just a click away.
+        </p>
+        <div class="action-buttons">
+            <a href="{{ url('adminusers') }}">Manage Users</a>
+            <a href="{{ url('adminproduct') }}">Manage Products</a>
+        </div>
     </div>
 </div>

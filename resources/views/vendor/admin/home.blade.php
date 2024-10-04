@@ -17,3 +17,5 @@
 
     <p>Check document out : <a href="https://github.com/rezaamini-ir/laravel-easypanel">Github repo</a></p>
 @endcomponent
+
+
