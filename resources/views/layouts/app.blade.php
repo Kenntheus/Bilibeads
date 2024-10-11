@@ -271,7 +271,7 @@
 
             <div class="logo">
                 <a href="index.html">
-                    <img src="{{ asset ('assets/images/bidslogo.png') }}" alt="Uomo" class="logo__image d-block" />
+                    <img src="{{ asset ('images/logo/bidslogo.png') }}" alt="Uomo" class="logo__image d-block" />
                 </a>
             </div>
 
@@ -388,7 +388,7 @@
             <div class="header-desk header-desk_type_1">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="{{ asset ('assets/images/bidslogo.png') }}" alt="Uomo" class="logo__image d-block" />
+                        <img src="{{ asset ('images/logo/bidslogo.png') }}" alt="Uomo" class="logo__image d-block" />
                     </a>
                 </div>
 
@@ -506,7 +506,7 @@
                 <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="{{ asset ('assets/images/bidslogo.png') }}" alt="Bilibeads" class="logo__image d-block" />
+                            <img src="{{ asset ('images/logo/bidslogo.png') }}" alt="Bilibeads" class="logo__image d-block" />
                         </a>
                     </div>
                     <p class="footer-address">Taga dyan lang</p>
