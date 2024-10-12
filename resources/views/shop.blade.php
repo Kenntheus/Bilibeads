@@ -1,5 +1,20 @@
 @extends('layouts.app')
 @section('content')
+<style>
+  .category-list li {
+    line-height: 40px;
+  }
+
+  .category-list li .chk-category {
+    width: 1rem;
+    height: 1rem;
+    color: #e4e4e4;
+    border: 0.125rem solid currentColor;
+    border-radius: 0;
+    margin-right: 0.75rem;
+  }
+</style>
+
 <main class="pt-90">
   <section class="shop-main container d-flex pt-4 pt-xl-5">
     <div class="shop-sidebar side-sticky bg-body" id="shopFilter">
@@ -26,17 +41,19 @@
           </h5>
           <div id="accordion-filter-1" class="accordion-collapse collapse show border-0"
             aria-labelledby="accordion-heading-1" data-bs-parent="#categories-list">
-            <div class="accordion-body px-0 pb-0 pt-3">
+            <div class="accordion-body px-0 pb-0 pt-3 category-list">
               <ul class="list list-inline mb-0">
+                @foreach ($categories as $category)
                 <li class="list-item">
-                  <a href="#" class="menu-link py-1">Bracelet</a>
+                  <span class="menu-link py-1">
+                    <input type="checkbox" class="chk-category" name="categories" value="{{$category->id}}"
+                      @if(in_array($category->id,explode(',',$f_categories))) checked="checked" @endif
+                    />
+                    {{$category->name}}
+                  </span>
+                  <span class="text-right float-end">{{$category->products->count()}}</span>
                 </li>
-                <li class="list-item">
-                  <a href="#" class="menu-link py-1">Necklace</a>
-                </li>
-                <li class="list-item">
-                  <a href="#" class="menu-link py-1">Ring</a>
-                </li>
+                @endforeach
               </ul>
             </div>
           </div>
@@ -59,16 +76,16 @@
           </h5>
           <div id="accordion-filter-price" class="accordion-collapse collapse show border-0"
             aria-labelledby="accordion-heading-price" data-bs-parent="#price-filters">
-            <input class="price-range-slider" type="text" name="price_range" value="" data-slider-min="10"
-              data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]" data-currency="$" />
+            <input class="price-range-slider" type="text" name="price_range" value="" data-slider-min="1"
+              data-slider-max="500" data-slider-step="5" data-slider-value="[{{$min_price}},{{$max_price}}]" data-currency="₱" />
             <div class="price-range__info d-flex align-items-center mt-2">
               <div class="me-auto">
                 <span class="text-secondary">Min Price: </span>
-                <span class="price-range__min">$250</span>
+                <span class="price-range__min">₱1</span>
               </div>
               <div>
                 <span class="text-secondary">Max Price: </span>
-                <span class="price-range__max">$450</span>
+                <span class="price-range__max">₱500</span>
               </div>
             </div>
           </div>
@@ -171,17 +188,18 @@
         </div>
 
         <div class="shop-acs d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-          <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Sort Items"
-            name="total-number">
-            <option selected>Default Sorting</option>
-            <option value="1">Featured</option>
-            <option value="2">Best selling</option>
-            <option value="3">Alphabetically, A-Z</option>
-            <option value="3">Alphabetically, Z-A</option>
-            <option value="3">Price, low to high</option>
-            <option value="3">Price, high to low</option>
-            <option value="3">Date, old to new</option>
-            <option value="3">Date, new to old</option>
+          <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" style="margin-right:20px;" aria-label="Page Size" id="pagesize" name="pagesize">
+            <option value="12" {{$size==12? 'selected':''}}>Show</option>
+            <option value="24" {{$size==24? 'selected':''}}>24</option>
+            <option value="48" {{$size==48? 'selected':''}}>48</option>
+            <option value="102" {{$size==102? 'selected':''}}>102</option>
+          </select>
+          <select class="shop-acs__select form-select w-auto border-0 py-0 order-1 order-md-0" aria-label="Sort Items" name="orderby" id="orderby">
+            <option value="-1" {{$order==-1 ? 'selected':''}}>Default</option>
+            <option value="1" {{$order==1 ? 'selected':''}}>Date, New to Old</option>
+            <option value="2" {{$order==2 ? 'selected':''}}>Date, Old to New</option>
+            <option value="3" {{$order==3 ? 'selected':''}}>Price, Low to High</option>
+            <option value="4" {{$order==4 ? 'selected':''}}>Price, High to Low</option>
           </select>
 
           <div class="shop-asc__seprator mx-3 bg-light d-none d-md-block order-md-0"></div>
@@ -240,7 +258,7 @@
               <input type="hidden" name="name" value="{{$product->name}}">
               <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->sale_price : $product->sale_price}}">
               <button
-                type ="submit" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
+                type="submit" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
                 data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
             </form>
             @endif
@@ -252,9 +270,9 @@
             <div class="product-card__price d-flex">
               <span class="money price">
                 @if($product->sale_price)
-                <s>${{$product->sale_price}}</s>${{$product->sale_price}}
+                <!-- <s>${{$product->sale_price}}</s> -->${{$product->sale_price}}
                 @else
-                  ${{$product->sale_price}}
+                ${{$product->sale_price}}
                 @endif
               </span>
             </div>
@@ -271,11 +289,60 @@
     </div>
     <div class="divider">
       <div class="flex item-center justify-between flex-wrap gap10 wgp-pagination">
-        {{$products->links('pagination::bootstrap-5')}}
+        {{$products->withQueryString()->links('pagination::bootstrap-5')}}
       </div>
     </div>
 
     </div>
   </section>
 </main>
+
+<form id="frmfilter" method="GET" action="{{route('shop.index')}}">
+  <input type="hidden" name="page" value="{{$products->currentPage()}}">
+  <input type="hidden" name="size" id="size" value="{{$size}}">
+  <input type="hidden" name="order" id="order" value="{{$order}}">
+  <input type="hidden" name="categories" id="hdnCategories">
+  <input type="hidden" name="min" id="hdnMinPrice" value="{{$min_price}}">
+  <input type="hidden" name="max" id="hdnMaxPrice" value="{{$max_price}}">
+</form>
+
 @endsection
+
+@push('scripts')
+<script>
+  $(function() {
+    $("#pagesize").on("change", function() {
+      $("#size").val($("#pagesize option:selected").val());
+      $("#frmfilter").submit();
+    });
+
+    $("#orderby").on("change", function() {
+      $("#order").val($("#orderby option:selected").val());
+      $("#frmfilter").submit();
+    });
+
+    $("input[name='categories']").on("change", function() {
+      var categories = "";
+      $("input[name='categories']:checked").each(function() {
+        if (categories == "") {
+          categories += $(this).val();
+        } else {
+          categories += "," + $(this).val();
+        }
+      });
+      $("#hdnCategories").val(categories);
+      $("#frmfilter").submit();
+    });
+
+    $("[name='price_range']").on("change",function(){
+      var min = $(this).val().split(',')[0];
+      var max = $(this).val().split(',')[1];
+      $("#hdnMinPrice").val(min);
+      $("#hdnMaxPrice").val(max);
+      setTimeout(() =>{
+        $("#frmfilter").submit();
+      }, 2000);
+    })
+  });
+</script>
+@endpush
