@@ -35,12 +35,12 @@
                                 </div>
                                 @endforeach -->
                             </div>
-                            <div class="swiper-button-prev"><svg width="7" height="11" viewBox="0 0 7 11" xmlns="http://www.w3.org/2000/svg">
+                            <!-- <div class="swiper-button-prev"><svg width="7" height="11" viewBox="0 0 7 11" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#icon_prev_sm" />
                                 </svg></div>
                             <div class="swiper-button-next"><svg width="7" height="11" viewBox="0 0 7 11" xmlns="http://www.w3.org/2000/svg">
                                     <use href="#icon_next_sm" />
-                                </svg></div>
+                                </svg></div> -->
                         </div>
                     </div>
                     <div class="product-single__thumbnail">
@@ -65,14 +65,7 @@
                         <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">The Shop</a>
                     </div><!-- /.breadcrumb -->
 
-                    <div class="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-                        <a href="#" class="text-uppercase fw-medium"><svg width="10" height="10" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_prev_md" />
-                            </svg><span class="menu-link menu-link_us-s">Prev</span></a>
-                        <a href="#" class="text-uppercase fw-medium"><span class="menu-link menu-link_us-s">Next</span><svg width="10" height="10" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_next_md" />
-                            </svg></a>
-                    </div><!-- /.shop-acs -->
+
                 </div>
                 <h1 class="product-single__name">{{$product->name}}</h1>
                 <div class="product-single__rating">
@@ -300,16 +293,16 @@
                 </div><!-- /.swiper-wrapper -->
             </div><!-- /.swiper-container js-swiper-slider -->
 
-            <div class="products-carousel__prev position-absolute top-50 d-flex align-items-center justify-content-center">
+            <!-- <div class="products-carousel__prev position-absolute top-50 d-flex align-items-center justify-content-center">
                 <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
                     <use href="#icon_prev_md" />
                 </svg>
-            </div><!-- /.products-carousel__prev -->
+            </div>
             <div class="products-carousel__next position-absolute top-50 d-flex align-items-center justify-content-center">
                 <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
                     <use href="#icon_next_md" />
                 </svg>
-            </div><!-- /.products-carousel__next -->
+            </div> -->
 
             <div class="products-pagination mt-4 mb-5 d-flex align-items-center justify-content-center"></div>
             <!-- /.products-pagination -->

@@ -7,6 +7,11 @@ use Surfsidemedia\Shoppingcart\Facades\Cart;
 
 class WishlistController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth'); // Apply auth middleware to all actions
+    }
     public function index()
     {
         $items = Cart::instance('wishlist')->content();

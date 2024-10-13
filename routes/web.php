@@ -38,6 +38,9 @@ Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout'
 Route::post('/place-an-order',[CartController::class,'place_an_order'])->name('cart.place.an.order');
 Route::get('/order-confirmation',[CartController::class,'order_confirmation'])->name('cart.order.confirmation');
 
+//Search Route
+Route::get('/search',[HomeController::class,'search'])->name('home.search');
+
 
 
 //User Routes
@@ -74,4 +77,7 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin/orders',[AdminController::class,'orders'])->name('admin.orders');
     Route::get('/admin/order/{order_id}/details',[AdminController::class,'order_details'])->name('admin.order.details');
     Route::put('/admin/order/updated-status',[AdminController::class,'update_order_status'])->name('admin.order.status.update');
+
+    //Search Route
+    Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');
 });

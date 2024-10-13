@@ -243,14 +243,14 @@
                         width="330" height="400" alt="Cropped Faux leather Jacket" class="pc__img"></a>
                 </div> -->
               </div>
-              <span class="pc__img-prev"><svg width="7" height="11" viewBox="0 0 7 11"
+              <!-- <span class="pc__img-prev"><svg width="7" height="11" viewBox="0 0 7 11"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_prev_sm" />
                 </svg></span>
               <span class="pc__img-next"><svg width="7" height="11" viewBox="0 0 7 11"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_next_sm" />
-                </svg></span>
+                </svg></span> -->
             </div>
             @if(Cart::instance('cart')->content()->where('id',$product->id)->count()>0)
             <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>

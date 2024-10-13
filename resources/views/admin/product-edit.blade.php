@@ -94,7 +94,7 @@
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <!-- <fieldset>
                     <div class="body-title mb-10">Upload Gallery Images</div>
                     <div class="upload-image mb-16">
                         @if($product->images)
@@ -115,7 +115,7 @@
                             </label>
                         </div>
                     </div>
-                </fieldset>
+                </fieldset> -->
 
                 <div class="cols gap22">
                     <fieldset class="name">

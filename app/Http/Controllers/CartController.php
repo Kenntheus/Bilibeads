@@ -14,6 +14,11 @@ use App\Models\Transaction;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); // Apply auth middleware to all actions
+    }
+    
     public function index()
     {
         $items = Cart::instance('cart')->content();
@@ -77,8 +82,6 @@ class CartController extends Controller
                 'state' => 'required',
                 'city' => 'required',
                 'address' => 'required',
-                'locality' => 'required',
-                'landmark' => 'required'
             ]);
 
             $address = new Address();
@@ -88,8 +91,6 @@ class CartController extends Controller
             $address->state = $request->state;
             $address->city = $request->city;
             $address->address = $request->address;
-            $address->locality = $request->locality;
-            $address->landmark = $request->landmark;
             $address->country = 'Philippines';
             $address->user_id = $user_id;
             $address->isdefault = true;
@@ -105,12 +106,10 @@ class CartController extends Controller
         $order->total = Session::get('checkout')['total'];
         $order->name = $address->name;
         $order->phone = $address->phone;
-        $order->locality = $address->locality;
         $order->address = $address->address;
         $order->city = $address->city;
         $order->state = $address->state;
         $order->country = $address->country;
-        $order->landmark = $address->landmark;
         $order->zip = $address->zip;
         $order->save();
 

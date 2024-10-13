@@ -46,7 +46,6 @@
                                     <div class="my-account__address-item__detail">
                                         <p>{{$address->name}}</p>
                                         <p>{{$address->address}}</p>
-                                        <p>{{$address->landmark}}</p>
                                         <p>{{$address->city}},{{$address->state}},{{$address->country}}</p>
                                         <p>{{$address->zip}}</p>
                                         <br>
@@ -102,20 +101,20 @@
                                 @error('address')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating my-3">
                                 <input type="text" class="form-control" name="locality" required="" value="{{old('locality')}}">
                                 <label for="locality">Road Name, Area, Colony *</label>
                                 @error('locality')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                        </div> -->
+                        <!-- <div class="col-md-12">
                             <div class="form-floating my-3">
                                 <input type="text" class="form-control" name="landmark" required="" value="{{old('landmark')}}">
                                 <label for="landmark">Landmark *</label>
                                 @error('landmark')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     @endif
                 </div>
