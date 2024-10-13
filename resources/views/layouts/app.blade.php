@@ -348,9 +348,9 @@
                         <li class="navigation__item">
                             <a href="about.html" class="navigation__link">About</a>
                         </li>
-                        <li class="navigation__item">
+                        <!-- <li class="navigation__item">
                             <a href="contact.html" class="navigation__link">Contact</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -434,9 +434,9 @@
                         <li class="navigation__item">
                             <a href="about.html" class="navigation__link">About</a>
                         </li>
-                        <li class="navigation__item">
+                        <!-- <li class="navigation__item">
                             <a href="contact.html" class="navigation__link">Contact</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
 
