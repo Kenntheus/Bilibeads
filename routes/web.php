@@ -33,10 +33,24 @@ Route::delete('/wishlist/item/remove/{rowId}',[WishlistController::class,'remove
 Route::delete('/wishlist/clear',[WishlistController::class,'empty_wishlist'])->name('wishlist.item.clear');
 Route::post('/wishlist/move-to-cart/{rowId}',[WishlistController::class,'move_to_cart'])->name('wishlist.move.to.cart');
 
+//Checkout Route
+Route::get('/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+Route::post('/place-an-order',[CartController::class,'place_an_order'])->name('cart.place.an.order');
+Route::get('/order-confirmation',[CartController::class,'order_confirmation'])->name('cart.order.confirmation');
+
+
+
+//User Routes
 Route::middleware(['auth'])->group(function(){
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+    Route::get('/account-orders',[UserController::class,'orders'])->name('user.order');
+    Route::get('/account-order/{order_id}/details',[UserController::class,'order_details'])->name('user.order.details');
+    Route::put('/account-order/cancel-order',[UserController::class,'order_cancel'])->name('user.order.cancel');
 });
 
+
+
+//Admin Routes
 Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
@@ -55,4 +69,9 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin/product/{id}/edit',[AdminController::class,'product_edit'])->name('admin.product.edit');
     Route::put('/admin/product/update',[AdminController::class,'product_update'])->name('admin.product.update');
     Route::delete('/admin/product/{id}/delete',[AdminController::class,'product_delete'])->name('admin.product.delete');
+
+    //Order Routes
+    Route::get('/admin/orders',[AdminController::class,'orders'])->name('admin.orders');
+    Route::get('/admin/order/{order_id}/details',[AdminController::class,'order_details'])->name('admin.order.details');
+    Route::put('/admin/order/updated-status',[AdminController::class,'update_order_status'])->name('admin.order.status.update');
 });
