@@ -1,5 +1,5 @@
 :root {
-  --Main: #2275fc;
+  --Main: #b08968;
   --White: #fff;
   --Black: #111;
   --Heading: #111;
@@ -3704,6 +3704,7 @@ select.h40 {
   width: 240px;
   overflow-x: auto;
 }
+
 .layout-wrap .section-menu-left > .center .center-item .menu-list .menu-item.has-children .sub-menu::-webkit-scrollbar {
   width: 0px;
 }
@@ -3717,6 +3718,8 @@ select.h40 {
 .layout-wrap .section-menu-left > .center .center-item .menu-list .menu-item.has-children .sub-menu a .text {
   color: #575864;
 }
+
+
 .layout-wrap .section-menu-left > .center .center-item .menu-list .menu-item.has-children .sub-menu a::before {
   position: absolute;
   content: "";

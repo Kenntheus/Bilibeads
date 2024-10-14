@@ -68,32 +68,13 @@
 
                 </div>
                 <h1 class="product-single__name">{{$product->name}}</h1>
-                <div class="product-single__rating">
-                    <div class="reviews-group d-flex">
-                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_star" />
-                        </svg>
-                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_star" />
-                        </svg>
-                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_star" />
-                        </svg>
-                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_star" />
-                        </svg>
-                        <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                            <use href="#icon_star" />
-                        </svg>
-                    </div>
-                    <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
-                </div>
+                
                 <div class="product-single__price">
                     <span class="current-price">
                         @if($product->sale_price)
-                        <!-- <s>${{$product->regular_price}}</s> --> ${{$product->sale_price}}
+                        <!-- <s>${{$product->regular_price}}</s> --> ₱{{$product->sale_price}}
                         @else
-                        {{$product->sale_price}}
+                        ₱{{$product->sale_price}}
                         @endif
                     </span>
                 </div>
@@ -181,7 +162,7 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-description" role="tabpanel" aria-labelledby="tab-description-tab">
-                    <div class="product-single__description">
+                    <div class="product-single__description text-center">
                         {{$product->description}}
                     </div>
                 </div>
@@ -255,9 +236,9 @@
                             <div class="product-card__price d-flex">
                                 <span class="money price">
                                     @if($product->sale_price)
-                                    <!-- <s>${{$product->sale_price}}</s> -->${{$product->sale_price}}
+                                    <!-- <s>${{$product->sale_price}}</s> -->₱{{$product->sale_price}}
                                     @else
-                                    ${{$product->sale_price}}
+                                    ₱{{$product->sale_price}}
                                     @endif
                                 </span>
                             </div>

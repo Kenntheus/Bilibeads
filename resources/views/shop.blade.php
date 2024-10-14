@@ -115,7 +115,7 @@
           <div class="swiper-slide">
             <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
               <div class="slide-split_text position-relative d-flex align-items-center"
-                style="background-color: #f5e6e0;">
+                style="background-color: #b08968;">
                 <div class="slideshow-text container p-3 p-xl-5">
                   <h2
                     class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
@@ -125,7 +125,7 @@
                 </div>
               </div>
               <div class="slide-split_media position-relative">
-                <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                <div class="slideshow-bg" style="background-color: #b08968;">
                   <img loading="lazy" src="{{asset('assets/carosel/carosel1.jpg')}}" width="630" height="450"
                     alt="Bilibeads: accessories" class="slideshow-bg__img object-fit-cover" />
                 </div>
@@ -136,7 +136,7 @@
           <div class="swiper-slide">
             <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
               <div class="slide-split_text position-relative d-flex align-items-center"
-                style="background-color: #f5e6e0;">
+                style="background-color: #b08968;">
                 <div class="slideshow-text container p-3 p-xl-5">
                   <h2
                     class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
@@ -146,7 +146,7 @@
                 </div>
               </div>
               <div class="slide-split_media position-relative">
-                <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                <div class="slideshow-bg" style="background-color: #b08968;">
                   <img loading="lazy" src="{{asset('assets/carosel/carosel2.jpg')}}" width="630" height="450"
                     alt="Bilibeads: accessories" class="slideshow-bg__img object-fit-cover" />
                 </div>
@@ -157,7 +157,7 @@
           <div class="swiper-slide">
             <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
               <div class="slide-split_text position-relative d-flex align-items-center"
-                style="background-color: #f5e6e0;">
+                style="background-color: #b08968;">
                 <div class="slideshow-text container p-3 p-xl-5">
                   <h2
                     class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
@@ -167,8 +167,8 @@
                 </div>
               </div>
               <div class="slide-split_media position-relative">
-                <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                  <img loading="lazy" src="{{asset('assets/carosel3.jpg')}}" width="630" height="450"
+                <div class="slideshow-bg" style="background-color: #b08968;">
+                  <img loading="lazy" src="{{asset('assets/carosel/carosel3.jpg')}}" width="630" height="450"
                     alt="Bilibeads: accessories" class="slideshow-bg__img object-fit-cover" />
                 </div>
               </div>
@@ -274,9 +274,9 @@
             <div class="product-card__price d-flex">
               <span class="money price">
                 @if($product->sale_price)
-                <!-- <s>${{$product->sale_price}}</s> -->${{$product->sale_price}}
+                <!-- <s>${{$product->sale_price}}</s> -->₱{{$product->sale_price}}
                 @else
-                ${{$product->sale_price}}
+                ₱{{$product->sale_price}}
                 @endif
               </span>
             </div>

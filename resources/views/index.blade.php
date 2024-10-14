@@ -46,7 +46,7 @@
             </div>
             <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
               <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
-                New Arrivals</h6>
+                </h6>
               <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Bilibeads:</h2>
               <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Accessories</h2>
               <a href="#"
@@ -59,13 +59,13 @@
         <div class="swiper-slide">
           <div class="overflow-hidden position-relative h-100">
             <div class="slideshow-character position-absolute bottom-0 pos_right-center">
-              <img loading="lazy" src="{{ asset('assets/images/home/demo3/BeadsLog.png')}}" width="400" height="690"
+              <img loading="lazy" src="{{ asset('assets/images/home/demo3/shakehands.png')}}" width="400" height="690"
                 alt="Woman Fashion 2"
                 class="slideshow-character__img animate animate_fade animate_rtl animate_delay-10 w-auto h-auto" />
             </div>
             <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
               <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
-                New Arrivals</h6>
+                </h6>
               <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Bilibeads:</h2>
               <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Accessories</h2>
               <a href="#"
