@@ -3,7 +3,8 @@
 <style>
     .table> :not(caption)>tr>th {
         padding: 0.625rem 1.5rem .625rem !important;
-        background-color: #6a6e51 !important;
+        background-color: transparent !important;
+        color: #000;
     }
 
     .table>tr>td {
@@ -13,7 +14,11 @@
     .table-bordered> :not(caption)>tr>th,
     .table-bordered> :not(caption)>tr>td {
         border-width: 1px 1px;
-        border-color: #6a6e51;
+        border-color: #000;
+    }
+
+    .custom_hover:hover{
+        color: #b08968 !important;
     }
 
     .table> :not(caption)>tr>td {
@@ -87,7 +92,7 @@
                                         <a href="{{route('user.order.details',['order_id'=>$order->id])}}">
                                             <div class="list-icon-function view-icon">
                                                 <div class="text-center">
-                                                    <h6>Details</h6>
+                                                    <h6 class="custom_hover">Details</h6>
                                                 </div>
                                             </div>
                                         </a>

@@ -40,8 +40,8 @@
                 <div class="section-menu-left">
                     <div class="box-logo">
                         <a href="{{route('admin.index')}}" id="site-logo-inner">
-                            <img class="" id="logo_header" alt="" src="{{asset ('images/logo/bidslogo.png')}}"
-                                data-light="{{asset ('images/logo/bidslogo.png')}}" data-dark="{{asset ('images/logo/bidslogo.png')}}">
+                            <img class="" id="logo_header" alt="" src="{{asset ('images/logo/Logo2.png')}}"
+                                data-light="{{asset ('images/logo/Logo2.png')}}" data-dark="{{asset ('images/logo/Logo2.png')}}">
                         </a>
                         <div class="button-show-hide">
                             <i class="icon-menu-left"></i>
@@ -162,9 +162,9 @@
                         <div class="wrap">
                             <div class="header-left">
                                 <a href="index-2.html">
-                                    <img class="" id="logo_header_mobile" alt="" src="{{asset ('images/logo/bidslogo.png')}}"
-                                        data-light="{{asset ('images/logo/bidslogo.png')}}" data-dark="{{asset ('images/logo/bidslogo.png')}}"
-                                        data-width="154px" data-height="52px" data-retina="{{asset ('images/logo/bidslogo.png')}}">
+                                    <img class="" id="logo_header_mobile" alt="" src="{{asset ('images/logo/Logo2.png')}}"
+                                        data-light="{{asset ('images/logo/Logo2.png')}}" data-dark="{{asset ('images/logo/Logo2.png')}}"
+                                        data-width="154px" data-height="52px" data-retina="{{asset ('images/logo/Logo2.png')}}">
                                 </a>
                                 <div class="button-show-hide">
                                     <i class="icon-menu-left"></i>

@@ -10,6 +10,10 @@
         text-transform: uppercase;
     }
 
+    .btn-back:hover{
+        color: #b08968;
+    }
+
     .my-account .page-title {
         font-size: 1.5rem;
         font-weight: 700;
@@ -59,7 +63,7 @@
 
     .table> :not(caption)>tr>th {
         padding: 0.625rem 1.5rem .25rem !important;
-        background-color: #6a6e51 !important;
+        background-color: transparent !important;
     }
 
     .table-bordered>:not(caption)>*>* {
@@ -68,6 +72,7 @@
         font-size: 14px;
         border: 1px solid #e1e1e1;
         vertical-align: middle;
+        color: #000 !important;
     }
 
     .table-striped .image {
@@ -84,6 +89,7 @@
     .table-striped td:nth-child(1) {
         min-width: 250px;
         padding-bottom: 7px;
+        
     }
 
     .pname {
@@ -94,7 +100,7 @@
     .table-bordered> :not(caption)>tr>th,
     .table-bordered> :not(caption)>tr>td {
         border-width: 1px 1px;
-        border-color: #6a6e51;
+        border-color: #000;
     }
 </style>
 <main class="pt-90" style="padding-top: 0px;">
@@ -114,7 +120,7 @@
                                 <h5>Ordered Details</h5>
                             </div>
                             <div class="col-6 text-right">
-                                <a class="btn btn-sm btn-danger" href="{{route('user.order')}}">Back</a>
+                                <a class="btn btn-sm btn-back" href="{{route('user.order')}}"><b>BACK</b></a>
                             </div>
                         </div>
                     </div>
@@ -173,7 +179,7 @@
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Options</th>
                                     <th class="text-center">Return Status</th>
-                                    <th class="text-center">Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -193,13 +199,7 @@
                                     <td class="text-center">{{$item->product->category->name}}</td>
                                     <td class="text-center">{{$item->options}}</td>
                                     <td class="text-center">{{$item->rstatus == 0 ? "No":"Yes"}}</td>
-                                    <td class="text-center">
-                                        <div class="list-icon-function view-icon">
-                                            <div class="item eye">
-                                                <i class="icon-eye"></i>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
