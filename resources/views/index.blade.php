@@ -92,7 +92,7 @@
               "autoplay": {
                 "delay": 5000
               },
-              "slidesPerView": 8,
+              "slidesPerView": 3,
               "slidesPerGroup": 1,
               "effect": "none",
               "loop": true,
@@ -118,7 +118,7 @@
                   "pagination": false
                 },
                 "1200": {
-                  "slidesPerView": 8,
+                  "slidesPerView": 3,
                   "slidesPerGroup": 1,
                   "spaceBetween": 60,
                   "pagination": false
