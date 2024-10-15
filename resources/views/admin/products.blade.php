@@ -55,7 +55,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>SalePrice</th>
+                            <th>Price</th>
                             <th>Category</th>
                             <th>Featured</th>
                             <th>Stock</th>

@@ -87,7 +87,7 @@
       <section class="category-carousel container">
         <h2 class="section-title text-center mb-3 pb-xl-2 mb-xl-4">You Might Like</h2>
 
-        <div class="position-relative">
+        <div class="position-relative mx-auto" style="width: 20%;">
           <div class="swiper-container js-swiper-slider" data-settings='{
               "autoplay": {
                 "delay": 5000
@@ -102,17 +102,17 @@
               },
               "breakpoints": {
                 "320": {
-                  "slidesPerView": 2,
+                  "slidesPerView": 3,
                   "slidesPerGroup": 2,
                   "spaceBetween": 15
                 },
                 "768": {
-                  "slidesPerView": 4,
+                  "slidesPerView": 3,
                   "slidesPerGroup": 4,
                   "spaceBetween": 30
                 },
                 "992": {
-                  "slidesPerView": 6,
+                  "slidesPerView": 3,
                   "slidesPerGroup": 1,
                   "spaceBetween": 45,
                   "pagination": false

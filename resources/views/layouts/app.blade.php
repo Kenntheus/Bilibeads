@@ -309,12 +309,15 @@
                 </a>
             </div>
 
-            <a href="#" class="header-tools__item header-tools__cart js-open-aside" data-aside="cartDrawer">
-                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+            <a href="{{ route('cart.index') }}" class="header-tools__item header-tools__cart">
+                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
                     xmlns="http://www.w3.org/2000/svg">
                     <use href="#icon_cart" />
                 </svg>
-                <span class="cart-amount d-block position-absolute js-cart-items-count">3</span>
+                @if (Cart::instance('cart')->content()->count() > 0)
+                <span
+                    class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('cart')->content()->count() }}</span>
+                @endif
             </a>
         </div>
 
@@ -483,25 +486,25 @@
                     </div>
 
                     @guest
-                        <div class="header-tools__item hover-container">
-                            <a href="{{ route('login') }}" class="header-tools__item">
-                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_user" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="header-tools__item hover-container">
+                        <a href="{{ route('login') }}" class="header-tools__item">
+                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <use href="#icon_user" />
+                            </svg>
+                        </a>
+                    </div>
                     @else
-                        <div class="header-tools__item hover-container">
-                            <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index') : route('user.index') }}"
-                                class="header-tools__item">
-                                <span class="pe-3" style="font-size: 15px; margin-top: 5px;">{{ Auth::user()->name }}</span>
-                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 8px;"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_user" />
-                                </svg>
-                            </a>
-                        </div>
+                    <div class="header-tools__item hover-container">
+                        <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index') : route('user.index') }}"
+                            class="header-tools__item">
+                            <span class="pe-3" style="font-size: 15px; margin-top: 5px;">{{ Auth::user()->name }}</span>
+                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 8px;"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <use href="#icon_user" />
+                            </svg>
+                        </a>
+                    </div>
                     @endguest
 
                     <a href="{{ route('wishlist.index') }}" class="header-tools__item header-tools__cart">
@@ -510,8 +513,8 @@
                             <use href="#icon_heart" />
                         </svg>
                         @if (Cart::instance('wishlist')->content()->count() > 0)
-                            <span
-                                class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('wishlist')->content()->count() }}</span>
+                        <span
+                            class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('wishlist')->content()->count() }}</span>
                         @endif
                     </a>
 
@@ -521,8 +524,8 @@
                             <use href="#icon_cart" />
                         </svg>
                         @if (Cart::instance('cart')->content()->count() > 0)
-                            <span
-                                class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('cart')->content()->count() }}</span>
+                        <span
+                            class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('cart')->content()->count() }}</span>
                         @endif
                     </a>
                 </div>
@@ -538,7 +541,7 @@
             <div class="row row-cols-lg-5 row-cols-2">
                 <div class="footer-column footer-store-info col-12 mb-4 mb-lg-0">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{ route('home.index') }}">
                             <img src="{{ asset('images/logo/Logo2.png') }}" alt="Bilibeads"
                                 class="logo__image d-block" />
                         </a>
@@ -656,7 +659,7 @@
     <footer class="footer-mobile container w-100 px-5 d-md-none bg-body">
         <div class="row text-center">
             <div class="col-4">
-                <a href="index.html" class="footer-mobile__link d-flex flex-column align-items-center">
+                <a href="{{ route('home.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
                     <svg class="d-block" width="18" height="18" viewBox="0 0 18 18" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <use href="#icon_home" />
@@ -666,7 +669,7 @@
             </div>
 
             <div class="col-4">
-                <a href="index.html" class="footer-mobile__link d-flex flex-column align-items-center">
+                <a href="{{ route('shop.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
                     <svg class="d-block" width="18" height="18" viewBox="0 0 18 18" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <use href="#icon_hanger" />
@@ -676,7 +679,7 @@
             </div>
 
             <div class="col-4">
-                <a href="index.html" class="footer-mobile__link d-flex flex-column align-items-center">
+                <a href="{{ route('wishlist.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
                     <div class="position-relative">
                         <svg class="d-block" width="18" height="18" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
