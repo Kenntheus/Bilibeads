@@ -43,6 +43,7 @@
                         </div>
                     </form>
                 </div>
+                <a class="tf-button style-1 w208" href="{{ route('admin.products.export') }}">Export</a>
                 <a class="tf-button style-1 w208" href="{{ route('admin.product.add') }}"><i class="icon-plus"></i>Add new</a>
             </div>
             <div class="table-responsive">
@@ -75,7 +76,7 @@
                                     <div class="text-tiny mt-3">{{$product->slug}}</div>
                                 </div>
                             </td>
-                            <td>${{$product->sale_price}}</td>
+                            <td>₱{{$product->sale_price}}</td>
                             <td>{{$product->category->name}}</td>
                             <td>{{$product->featured == 0 ? "No":"Yes"}}</td>
                             <td>{{$product->stock_status}}</td>

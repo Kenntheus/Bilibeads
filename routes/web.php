@@ -65,6 +65,9 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
+    //Export Route
+    Route::get('/admin/products/export', [App\Http\Controllers\AdminController::class, 'export'])->name('admin.products.export');
+
     //Category Routes
     Route::get('/admin/categories',[AdminController::class,'categories'])->name('admin.categories');
     Route::get('/admin/category/add',[AdminController::class,'category_add'])->name('admin.category.add');

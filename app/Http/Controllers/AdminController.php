@@ -13,13 +13,19 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Laravel\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 
 class AdminController extends Controller
 {
+    public function export()
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
     public function index()
     {
-        $orders = Order::orderBy('created_at','DESC')->get()->take(10);
+        $orders = Order::orderBy('created_at', 'DESC')->get()->take(10);
         $dashboardDatas = DB::select("Select sum(total) As TotalAmount,
                                     sum(if(status='ordered',total,0)) As TotalOrderedAmount,
                                     sum(if(status='delivered',total,0)) As TotalDeliveredAmount,
@@ -30,7 +36,7 @@ class AdminController extends Controller
                                     sum(if(status='canceled',1,0)) As TotalCanceled
                                     From Orders
                                     ");
-        return view('admin.index',compact('orders','dashboardDatas'));
+        return view('admin.index', compact('orders', 'dashboardDatas'));
     }
     public function categories()
     {
@@ -309,45 +315,41 @@ class AdminController extends Controller
 
     public function orders()
     {
-        $orders = Order::orderBy('created_at','DESC')->paginate(12);
-        return view('admin.orders',compact('orders'));
+        $orders = Order::orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.orders', compact('orders'));
     }
 
     public function order_details($order_id)
     {
         $order = Order::find($order_id);
-        $orderItems = OrderItem::where('order_id',$order_id)->orderBy('id')->paginate(12);
-        $transaction = Transaction::where('order_id',$order_id)->first();
-        return view('admin.order-details',compact('order','orderItems','transaction'));
+        $orderItems = OrderItem::where('order_id', $order_id)->orderBy('id')->paginate(12);
+        $transaction = Transaction::where('order_id', $order_id)->first();
+        return view('admin.order-details', compact('order', 'orderItems', 'transaction'));
     }
 
     public function update_order_status(Request $request)
     {
         $order = Order::find($request->order_id);
         $order->status = $request->order_status;
-        if($request->order_status == 'delivered')
-        {
+        if ($request->order_status == 'delivered') {
             $order->delivered_date = Carbon::now();
-        }
-        elseif($request->order_status == 'canceled')
-        {
+        } elseif ($request->order_status == 'canceled') {
             $order->canceled_date = Carbon::now();
         }
         $order->save();
 
-        if($request->order_status=='delivered')
-        {
-            $transaction = Transaction::where('order_id',$request->order_id)->first();
+        if ($request->order_status == 'delivered') {
+            $transaction = Transaction::where('order_id', $request->order_id)->first();
             $transaction->status = 'approved';
             $transaction->save();
         }
-        return back()->with("status","Status changed successfully!");
+        return back()->with("status", "Status changed successfully!");
     }
 
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $results = Product::where('name','LIKE',"%{$query}%")->get()->take(8);
+        $results = Product::where('name', 'LIKE', "%{$query}%")->get()->take(8);
         return response()->json($results);
     }
 }

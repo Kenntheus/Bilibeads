@@ -485,7 +485,7 @@
                     @guest
                         <div class="header-tools__item hover-container">
                             <a href="{{ route('login') }}" class="header-tools__item">
-                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <use href="#icon_user" />
                                 </svg>
@@ -495,8 +495,8 @@
                         <div class="header-tools__item hover-container">
                             <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index') : route('user.index') }}"
                                 class="header-tools__item">
-                                <span class="pr-6px">{{ Auth::user()->name }}</span>
-                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                <span class="pe-3" style="font-size: 15px; margin-top: 5px;">{{ Auth::user()->name }}</span>
+                                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 8px;"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <use href="#icon_user" />
                                 </svg>
@@ -505,7 +505,7 @@
                     @endguest
 
                     <a href="{{ route('wishlist.index') }}" class="header-tools__item header-tools__cart">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
                             xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_heart" />
                         </svg>
@@ -516,7 +516,7 @@
                     </a>
 
                     <a href="{{ route('cart.index') }}" class="header-tools__item header-tools__cart">
-                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" style="margin-top: 5px;"
                             xmlns="http://www.w3.org/2000/svg">
                             <use href="#icon_cart" />
                         </svg>
