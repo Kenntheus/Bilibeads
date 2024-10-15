@@ -141,8 +141,7 @@
                                         <div class="icon"><i class="icon-settings"></i></div>
                                         <div class="text">Settings</div>
                                     </a>
-                                </li>
- -->
+                                </li> -->
                                 <li class="menu-item">
                                     <form method="POST" action={{route('logout')}} id="logout-form">
                                         @csrf
@@ -195,7 +194,7 @@
                                             id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="header-user wg-user">
                                                 <span class="flex flex-column">
-                                                    <span class="body-title mb-2">Admin</span>
+                                                    <span class="body-title mb-2">{{ Auth::user()->name }}</span>
                                                     <span class="text-tiny">Admin</span>
                                                 </span>
                                             </span>
