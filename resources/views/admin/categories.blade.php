@@ -137,7 +137,7 @@
                 text: "You want to delete this record?",
                 type: "warning",
                 buttons: ["No!", "Yes!"],
-                confirmButtonColor: '#dc3545'
+                confirmButtonColor: 'red'
             }).then(function(result) {
                 if (result) {
                     selectedForm.submit();

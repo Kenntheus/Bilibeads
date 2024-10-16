@@ -38,26 +38,6 @@
                         <div class="col-6">
                         </div>
                     </div>
-                    @if($address)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="my-account__address-list">
-                                <div class="my-account__address-list-item">
-                                    <div class="my-account__address-item__detail">
-                                        <p>{{$address->name}}</p>
-                                        <p>{{$address->address}}</p>
-                                        <p>{{$address->city}},{{$address->state}},{{$address->country}}</p>
-                                        <p>{{$address->zip}}</p>
-                                        <br>
-                                        <p>{{$address->phone}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    @else
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="form-floating my-3">
@@ -76,14 +56,14 @@
                         <div class="col-md-4">
                             <div class="form-floating my-3">
                                 <input type="text" class="form-control" name="zip" required="" value="{{old('zip')}}">
-                                <label for="zip">Pincode *</label>
+                                <label for="zip">Zip Code *</label>
                                 @error('zip')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-floating mt-3 mb-3">
                                 <input type="text" class="form-control" name="state" required="" value="{{old('state')}}">
-                                <label for="state">State *</label>
+                                <label for="state">Province *</label>
                                 @error('state')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -116,7 +96,7 @@
                             </div>
                         </div> -->
                     </div>
-                    @endif
+
                 </div>
                 <div class="checkout__totals-wrapper">
                     <div class="sticky-content">
@@ -160,7 +140,7 @@
                             </table>
                         </div>
                         <div class="checkout__payment-methods">
-                            <div class="form-check">
+                            <!-- <div class="form-check">
                                 <input class="form-check-input form-check-input_fill" type="radio" name="mode" id="mode1" value="card">
                                 <label class="form-check-label" for="mode1">
                                     Debit or Credit Card
@@ -171,7 +151,7 @@
                                 <label class="form-check-label" for="mode2">
                                     Paypal
                                 </label>
-                            </div>
+                            </div> -->
                             <div class="form-check">
                                 <input class="form-check-input form-check-input_fill" type="radio" name="mode" id="mode3" value="cod">
                                 <label class="form-check-label" for="mode3">

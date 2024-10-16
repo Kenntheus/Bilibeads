@@ -147,7 +147,7 @@
                         <div class="select mb-10">
                             <select class="" name="featured">
                                 <option value="0" {{$product->featured == "0" ? "Selected":"" }}>No</option>
-                                <option value="1" {{$product->featured == "1" ? "Selected":"" }}>Yes</option>
+                                <option value="1" {{$product->featured == "1" ? "Selected":"" }} style="color: red;">Yes</option>
                             </select>
                         </div>
                     </fieldset>

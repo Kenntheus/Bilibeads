@@ -87,7 +87,7 @@
       <section class="category-carousel container">
         <h2 class="section-title text-center mb-3 pb-xl-2 mb-xl-4">You Might Like</h2>
 
-        <div class="position-relative mx-auto" style="width: 20%;">
+        <div class="position-relative mx-auto" style="width: 38%">
           <div class="swiper-container js-swiper-slider" data-settings='{
               "autoplay": {
                 "delay": 5000

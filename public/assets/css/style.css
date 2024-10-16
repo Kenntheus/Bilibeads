@@ -11525,20 +11525,20 @@ fieldset:disabled .btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #222222;
+    background-color: #483d34;
     border-color: #222222;
     box-shadow: none;
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: #1d1d1d;
+    background-color: #483d34;
     border-color: #1b1b1b;
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
     color: #fff;
     background-color: #1d1d1d;
-    border-color: #1b1b1b;
+    border-color: #483d34;
     box-shadow: 0 0 0 0 rgba(67, 67, 67, 0.5);
 }
 .btn-check:checked + .btn-primary,

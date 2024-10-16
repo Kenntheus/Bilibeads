@@ -44,6 +44,7 @@ class AdminController extends Controller
         return view("admin.categories", compact('categories'));
     }
 
+    //Add Category
     public function category_add()
     {
         return view("admin.category-add");
@@ -85,6 +86,7 @@ class AdminController extends Controller
         return view('admin.category-edit', compact('category'));
     }
 
+    //Category Edit Function
     public function category_update(Request $request)
     {
         $request->validate([
@@ -111,6 +113,8 @@ class AdminController extends Controller
         return redirect()->route('admin.categories')->with('status', 'Category has been Updated Successfully!');
     }
 
+
+    //Category Delete Function
     public function category_delete($id)
     {
         $category = Category::find($id);

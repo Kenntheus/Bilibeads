@@ -148,7 +148,7 @@
                         <div class="select mb-10">
                             <select class="" name="featured">
                                 <option value="0">No</option>
-                                <option value="1">Yes</option>
+                                <option value="1" style="color: red;">Yes</option>
                             </select>
                         </div>
                     </fieldset>

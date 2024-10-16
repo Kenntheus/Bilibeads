@@ -286,7 +286,7 @@
                 text: "You want to cancel this order?",
                 type: "warning",
                 buttons: ["No!", "Yes!"],
-                confirmButtonColor: '#dc3545'
+                confirmButtonColor: 'red'
             }).then(function(result) {
                 if (result) {
                     selectedForm.submit();
