@@ -65,7 +65,6 @@ class CartController extends Controller
             return redirect()->route('login');
         }
 
-        // Fetch the most recent address for the user
         $address = Address::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->first();
 
         return view('checkout', compact('address'));

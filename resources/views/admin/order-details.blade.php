@@ -136,6 +136,7 @@
                 <div class="my-account__address-item__detail">
                     <p>{{$order->name}}</p>
                     <p>{{$order->address}}</p>
+                    <p>{{$order->state}}</p>
                     <p>{{$order->city}}, {{$order->country}}</p>
                     <p>{{$order->zip}}</p>
                     <br>
