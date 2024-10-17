@@ -56,7 +56,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap14">
                                 <div class="image ic-bg">
-                                <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
+                                    <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
                                 </div>
                                 <div>
                                     <div class="body-text mb-2">Pending Orders Amount</div>
@@ -89,7 +89,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap14">
                                 <div class="image ic-bg">
-                                <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
+                                    <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
                                 </div>
                                 <div>
                                     <div class="body-text mb-2">Delivered Orders Amount</div>
@@ -119,7 +119,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap14">
                                 <div class="image ic-bg">
-                                <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
+                                    <i class="icon-peso-sign" style="font-size: 28px;">₱</i>
                                 </div>
                                 <div>
                                     <div class="body-text mb-2">Cancelled Orders Amount</div>
@@ -201,55 +201,59 @@
                 </div>
                 <div class="wg-table table-all-user">
                     <div class="table-responsive">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th style="width:70px">OrderNo</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Phone</th>
-                                <th class="text-center">Subtotal</th>
-                                <th class="text-center">Shipping Fee</th>
-                                <th class="text-center">Total</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Order Date</th>
-                                <th class="text-center">Total Items</th>
-                                <th class="text-center">Delivered On</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($orders as $order)
-                            <tr>
-                                <td class="text-center">{{$order->id}}</td>
-                                <td class="text-center">{{$order->name}}</td>
-                                <td class="text-center">{{$order->phone}}</td>
-                                <td class="text-center">₱{{$order->subtotal}}</td>
-                                <td class="text-center">₱{{$order->tax}}</td>
-                                <td class="text-center">₱{{$order->total}}</td>
-                                <td class="text-center">
-                                    @if($order->status == 'delivered')
-                                    <span class="badge bg-success">Delivered</span>
-                                    @elseif($order->status == 'canceled')
-                                    <span class="badge bg-danger">Cancelled</span>
-                                    @else
-                                    <span class="badge bg-warning">Ordered</span>
-                                    @endif
-                                </td>
-                                <td class="text-center">{{$order->created_at}}</td>
-                                <td class="text-center">{{$order->orderItems->count()}}</td>
-                                <td class="text-center">{{$order->delivered_date}}</td>
-                                <td class="text-center">
-                                    <a href="{{route('admin.order.details',['order_id'=>$order->id])}}">
-                                        <div class="list-icon-function view-icon">
-                                            <div class="item eye">
-                                                <i class="icon-eye"></i>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:70px">OrderNo</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Phone</th>
+                                    <th class="text-center">Subtotal</th>
+                                    <th class="text-center">Shipping Fee</th>
+                                    <th class="text-center">Total</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Order Date</th>
+                                    <th class="text-center">Total Items</th>
+                                    <!-- <th class="text-center">Delivered On</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                <tr>
+                                    <td class="text-center">{{$order->id}}</td>
+                                    <td class="text-center">{{$order->name}}</td>
+                                    <td class="text-center">{{$order->phone}}</td>
+                                    <td class="text-center">₱{{$order->subtotal}}</td>
+                                    <td class="text-center">₱{{$order->tax}}</td>
+                                    <td class="text-center">₱{{$order->total}}</td>
+                                    <td class="text-center">
+                                        @if($order->status == 'rejected')
+                                        <span class="badge bg-danger">Rejected</span>
+                                        @elseif($order->status == 'canceled')
+                                        <span class="badge bg-danger">Canceled</span>
+                                        @elseif($order->status == 'processing')
+                                        <span class="badge bg-warning">Processing</span>
+                                        @elseif($order->status == 'delivered')
+                                        <span class="badge bg-success">Delivered</span>
+                                        @else
+                                        <span class="badge bg-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">{{$order->created_at}}</td>
+                                    <td class="text-center">{{$order->orderItems->count()}}</td>
+                                    <!-- <td class="text-center">{{$order->delivered_date}}</td> -->
+                                    <td class="text-center">
+                                        <a href="{{route('admin.order.details',['order_id'=>$order->id])}}">
+                                            <div class="list-icon-function view-icon">
+                                                <div class="item eye">
+                                                    <i class="icon-eye"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -59,11 +59,11 @@
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Order Date</th>
                                 <th class="text-center">Total Items</th>
-                                <th class="text-center">Delivered On</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
+                            @if($order->status == 'pending')
                             <tr>
                                 <td class="text-center">{{$order->id}}</td>
                                 <td class="text-center">{{$order->name}}</td>
@@ -72,21 +72,10 @@
                                 <td class="text-center">₱{{$order->tax}}</td>
                                 <td class="text-center">₱{{$order->total}}</td>
                                 <td class="text-center">
-                                    @if($order->status == 'rejected')
-                                    <span class="badge bg-danger">Rejected</span>
-                                    @elseif($order->status == 'canceled')
-                                    <span class="badge bg-danger">Canceled</span>
-                                    @elseif($order->status == 'processing')
-                                    <span class="badge bg-warning">Processing</span>
-                                    @elseif($order->status == 'delivered')
-                                    <span class="badge bg-success">Delivered</span>
-                                    @else
                                     <span class="badge bg-warning">Pending</span>
-                                    @endif
                                 </td>
                                 <td class="text-center">{{$order->created_at}}</td>
                                 <td class="text-center">{{$order->orderItems->count()}}</td>
-                                <td class="text-center">{{$order->delivered_date}}</td>
                                 <td class="text-center">
                                     <a href="{{route('admin.order.details',['order_id'=>$order->id])}}">
                                         <div class="list-icon-function view-icon">
@@ -97,6 +86,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

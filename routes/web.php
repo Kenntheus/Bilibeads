@@ -66,7 +66,7 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
     //Export Route
-    Route::get('/admin/products/export', [App\Http\Controllers\AdminController::class, 'export'])->name('admin.products.export');
+    Route::get('/admin/products/export', [AdminController::class, 'export'])->name('admin.products.export');
 
     //Category Routes
     Route::get('/admin/categories',[AdminController::class,'categories'])->name('admin.categories');
@@ -88,6 +88,11 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route::get('/admin/orders',[AdminController::class,'orders'])->name('admin.orders');
     Route::get('/admin/order/{order_id}/details',[AdminController::class,'order_details'])->name('admin.order.details');
     Route::put('/admin/order/updated-status',[AdminController::class,'update_order_status'])->name('admin.order.status.update');
+    Route::get('/admin/pending-orders', [AdminController::class, 'pending_orders'])->name('admin.pending-orders');
+    Route::get('/admin/rejected-orders', [AdminController::class, 'rejected_orders'])->name('admin.rejected-orders');
+    Route::get('/admin/canceled-orders', [AdminController::class, 'canceled_orders'])->name('admin.cancelled-orders');
+    Route::get('/admin/processing-orders', [AdminController::class, 'processing_orders'])->name('admin.processing-orders');
+    Route::get('/admin/delivered-orders', [AdminController::class, 'delivered_orders'])->name('admin.delivered-orders');
 
     //Search Route
     Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');

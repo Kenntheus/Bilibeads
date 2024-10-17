@@ -23,8 +23,15 @@ class AdminController extends Controller
     {
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
+
+    protected function getRecentOrders()
+    {
+        return Order::orderBy('created_at', 'DESC')->take(5)->get();
+    }
+
     public function index()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::orderBy('created_at', 'DESC')->get()->take(10);
         $dashboardDatas = DB::select("Select sum(total) As TotalAmount,
                                     sum(if(status='ordered',total,0)) As TotalOrderedAmount,
@@ -36,18 +43,28 @@ class AdminController extends Controller
                                     sum(if(status='canceled',1,0)) As TotalCanceled
                                     From Orders
                                     ");
-        return view('admin.index', compact('orders', 'dashboardDatas'));
+        return view('admin.index', compact('orders', 'dashboardDatas', 'recentOrders'));
     }
     public function categories()
     {
+        // Fetch recent orders
+        $recentOrders = $this->getRecentOrders();
+
+        // Fetch categories
         $categories = Category::orderBy('id', 'DESC')->paginate(10);
-        return view("admin.categories", compact('categories'));
+
+        // Pass both recent orders and categories to the view
+        return view("admin.categories", compact('categories', 'recentOrders'));
     }
 
     //Add Category
     public function category_add()
     {
-        return view("admin.category-add");
+        // Fetch recent orders
+        $recentOrders = $this->getRecentOrders();
+
+        // Pass recent orders to the view
+        return view("admin.category-add", compact('recentOrders'));
     }
 
     public function GenerateCategoryThumbnailsImage($image, $imageName)
@@ -127,14 +144,16 @@ class AdminController extends Controller
 
     public function products()
     {
+        $recentOrders = $this->getRecentOrders();
         $products = Product::orderBy('created_at', 'DESC')->paginate(10);
-        return view('admin.products', compact('products'));
+        return view('admin.products', compact('products', 'recentOrders'));
     }
 
     public function product_add()
     {
+        $recentOrders = $this->getRecentOrders();
         $categories = Category::select('id', 'name')->orderBy('name')->get();
-        return view('admin.product-add', compact('categories'));
+        return view('admin.product-add', compact('categories', 'recentOrders'));
     }
 
     public function GenerateProductThumbnailsImage($image, $imageName)
@@ -335,18 +354,22 @@ class AdminController extends Controller
     {
         $order = Order::find($request->order_id);
         $order->status = $request->order_status;
-        if ($request->order_status == 'delivered') {
-            $order->delivered_date = Carbon::now();
+        if ($request->order_status == 'rejected') {
+            $order->canceled_date = Carbon::now();
         } elseif ($request->order_status == 'canceled') {
             $order->canceled_date = Carbon::now();
+        } elseif ($request->order_status == 'processing') {
+            $order->updated_date = Carbon::now();
+        } elseif ($request->order_status == 'delivered') {
+            $order->delivered_date = Carbon::now();
         }
         $order->save();
 
-        if ($request->order_status == 'delivered') {
+        /* if ($request->order_status == 'delivered') {
             $transaction = Transaction::where('order_id', $request->order_id)->first();
             $transaction->status = 'approved';
             $transaction->save();
-        }
+        } */
         return back()->with("status", "Status changed successfully!");
     }
 
@@ -355,5 +378,35 @@ class AdminController extends Controller
         $query = $request->input('query');
         $results = Product::where('name', 'LIKE', "%{$query}%")->get()->take(8);
         return response()->json($results);
+    }
+
+    public function pending_orders()
+    {
+        $orders = Order::where('status', 'pending')->orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.pending-orders', compact('orders'));
+    }
+
+    public function rejected_orders()
+    {
+        $orders = Order::where('status', 'rejected')->orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.rejected-orders', compact('orders'));
+    }
+
+    public function canceled_orders()
+    {
+        $orders = Order::where('status', 'canceled')->orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.cancelled-orders', compact('orders'));
+    }
+
+    public function processing_orders()
+    {
+        $orders = Order::where('status', 'processing')->orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.processing-orders', compact('orders'));
+    }
+
+    public function delivered_orders()
+    {
+        $orders = Order::where('status', 'delivered')->orderBy('created_at', 'DESC')->paginate(12);
+        return view('admin.delivered-orders', compact('orders'));
     }
 }

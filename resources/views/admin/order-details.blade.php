@@ -56,12 +56,16 @@
                         <tr>
                             <th>Order Status</th>
                             <td colspan="5">
-                                @if($order->status == 'delivered')
-                                <span class="badge bg-success">Delivered</span>
+                                @if($order->status == 'rejected')
+                                <span class="badge bg-danger">Rejected</span>
                                 @elseif($order->status == 'canceled')
                                 <span class="badge bg-danger">Canceled</span>
+                                @elseif($order->status == 'processing')
+                                <span class="badge bg-warning">Processing</span>
+                                @elseif($order->status == 'delivered')
+                                <span class="badge bg-success">Delivered</span>
                                 @else
-                                <span class="badge bg-warning">Ordered</span>
+                                <span class="badge bg-warning">Pending</span>
                                 @endif
                             </td>
                         </tr>
@@ -149,7 +153,7 @@
                         <td>₱{{$order->subtotal}}</td>
                         <th>Shipping Fee</th>
                         <td>₱{{$order->tax}}</td>
-                        <th>Status</th>
+                        <!-- <th>Status</th>
                         <td>
                             @if($transaction->status == 'approved')
                                 <span class="badge bg-success">Approved</span>
@@ -160,7 +164,7 @@
                             @else
                                 <span class="badge bg-warning">Pending</span>
                             @endif
-                        </td>
+                        </td> -->
                     </tr>
                     <tr>
                         <th>Total</th>
@@ -182,9 +186,11 @@
                     <div class="col-md-3">
                         <div class="select">
                             <select id="order_status" name="order_status">
-                                <option value="ordered" {{$order->status == 'ordered' ? "selected":""}}>Ordered</option>
-                                <option value="delivered" {{$order->status == 'delivered' ? "selected":""}}>Delivered</option>
+                                <option value="pending" {{$order->status == 'pending' ? "selected":""}}>Pending</option>
+                                <option value="rejected" {{$order->status == 'rejected' ? "selected":""}}>Rejected</option>
                                 <option value="canceled" {{$order->status == 'canceled' ? "selected":""}}>Canceled</option>
+                                <option value="processing" {{$order->status == 'processing' ? "selected":""}}>Processing</option>
+                                <option value="delivered" {{$order->status == 'delivered' ? "selected":""}}>Delivered</option>
                             </select>
                         </div>
                     </div>

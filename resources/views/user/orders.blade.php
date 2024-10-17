@@ -17,7 +17,7 @@
         border-color: #000;
     }
 
-    .custom_hover:hover{
+    .custom_hover:hover {
         color: #b08968 !important;
     }
 
@@ -77,12 +77,16 @@
                                     <td class="text-center">₱{{$order->tax}}</td>
                                     <td class="text-center">₱{{$order->total}}</td>
                                     <td class="text-center">
-                                        @if($order->status == 'delivered')
-                                        <span class="badge bg-success">Delivered</span>
+                                        @if($order->status == 'rejected')
+                                        <span class="badge bg-danger">Rejected</span>
                                         @elseif($order->status == 'canceled')
-                                        <span class="badge bg-danger">Cancelled</span>
+                                        <span class="badge bg-danger">Canceled</span>
+                                        @elseif($order->status == 'processing')
+                                        <span class="badge bg-warning">Processing</span>
+                                        @elseif($order->status == 'delivered')
+                                        <span class="badge bg-success">Delivered</span>
                                         @else
-                                        <span class="badge bg-warning">Ordered</span>
+                                        <span class="badge bg-warning">Pending</span>
                                         @endif
                                     </td>
                                     <td class="text-center">{{$order->created_at}}</td>

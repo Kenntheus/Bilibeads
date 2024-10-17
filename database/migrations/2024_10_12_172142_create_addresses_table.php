@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('country');
             $table->string('zip');
             $table->string('type')->default('home');
-            $table->boolean('isdefault')->default(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

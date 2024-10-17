@@ -18,7 +18,7 @@ class CartController extends Controller
     {
         $this->middleware('auth'); // Apply auth middleware to all actions
     }
-    
+
     public function index()
     {
         $items = Cart::instance('cart')->content();
@@ -65,37 +65,35 @@ class CartController extends Controller
             return redirect()->route('login');
         }
 
-        $address = Address::where('user_id', Auth::user()->id)->where('isdefault', 1)->first();
+        // Fetch the most recent address for the user
+        $address = Address::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->first();
+
         return view('checkout', compact('address'));
     }
 
     public function place_an_order(Request $request)
     {
         $user_id = Auth::user()->id;
-        $address = Address::where('user_id', $user_id)->where('isdefault', true)->first();
 
-        if (!$address) {
-            $request->validate([
-                'name' => 'required|max:100',
-                'phone' => 'required|numeric|digits:10',
-                'zip' => 'required|numeric|digits:4',
-                'state' => 'required',
-                'city' => 'required',
-                'address' => 'required',
-            ]);
+        $request->validate([
+            'name' => 'required|max:100',
+            'phone' => 'required|numeric|digits:10',
+            'zip' => 'required|numeric|digits:4',
+            'state' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+        ]);
 
-            $address = new Address();
-            $address->name = $request->name;
-            $address->phone = $request->phone;
-            $address->zip = $request->zip;
-            $address->state = $request->state;
-            $address->city = $request->city;
-            $address->address = $request->address;
-            $address->country = 'Philippines';
-            $address->user_id = $user_id;
-            $address->isdefault = true;
-            $address->save();
-        }
+        $address = (object) [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'zip' => $request->zip,
+            'state' => $request->state,
+            'city' => $request->city,
+            'address' => $request->address,
+            'country' => 'Philippines',
+        ];
+
 
         $this->setAmountforCheckout();
 
@@ -121,26 +119,20 @@ class CartController extends Controller
             $orderItem->quantity = $item->qty;
             $orderItem->save();
         }
-
-        if ($request->mode == "card") {
-            //
-        } elseif ($request->mode == "card") {
-            //
-        } elseif ($request->mode == "cod") {
+        if ($request->mode == "cod") {
             $transaction = new Transaction();
             $transaction->user_id = $user_id;
             $transaction->order_id = $order->id;
             $transaction->mode = $request->mode;
-            $transaction->status = "pending";
             $transaction->save();
         }
 
         Cart::instance('cart')->destroy();
         Session::forget('checkout');
         Session::put('order_id', $order->id);
+
         return redirect()->route('cart.order.confirmation');
     }
-
     public function setAmountforCheckout()
     {
         if (!Cart::instance('cart')->content()->count() > 0) {

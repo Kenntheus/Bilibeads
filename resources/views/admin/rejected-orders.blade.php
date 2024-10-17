@@ -15,7 +15,7 @@
 <div class="main-content-inner">
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>Orders</h3>
+            <h3>Rejected Orders</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li>
                     <a href="{{route('admin.index')}}">
@@ -26,7 +26,7 @@
                     <i class="icon-chevron-right"></i>
                 </li>
                 <li>
-                    <div class="text-tiny">Orders</div>
+                    <div class="text-tiny">Rejected Orders</div>
                 </li>
             </ul>
         </div>
@@ -59,7 +59,7 @@
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Order Date</th>
                                 <th class="text-center">Total Items</th>
-                                <th class="text-center">Delivered On</th>
+                                <th class="text-center">Rejected Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,21 +72,11 @@
                                 <td class="text-center">₱{{$order->tax}}</td>
                                 <td class="text-center">₱{{$order->total}}</td>
                                 <td class="text-center">
-                                    @if($order->status == 'rejected')
                                     <span class="badge bg-danger">Rejected</span>
-                                    @elseif($order->status == 'canceled')
-                                    <span class="badge bg-danger">Canceled</span>
-                                    @elseif($order->status == 'processing')
-                                    <span class="badge bg-warning">Processing</span>
-                                    @elseif($order->status == 'delivered')
-                                    <span class="badge bg-success">Delivered</span>
-                                    @else
-                                    <span class="badge bg-warning">Pending</span>
-                                    @endif
                                 </td>
                                 <td class="text-center">{{$order->created_at}}</td>
                                 <td class="text-center">{{$order->orderItems->count()}}</td>
-                                <td class="text-center">{{$order->delivered_date}}</td>
+                                <td class="text-center">{{$order->canceled_date}}</td>
                                 <td class="text-center">
                                     <a href="{{route('admin.order.details',['order_id'=>$order->id])}}">
                                         <div class="list-icon-function view-icon">
@@ -109,8 +99,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="bottom-page">
     <div class="body-text">Copyright © 2024 Bilibeads</div>

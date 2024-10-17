@@ -98,23 +98,43 @@
                                     </ul>
                                 </li>
 
-                                <li class="menu-item">
-                                    <a href="{{route('admin.orders')}}" class="menu-item-button">
-                                        <div class="icon"><i class="icon-file-plus"></i></div>
+                                <li class="menu-item has-children">
+                                    <a href="javascript:void(0);" class="menu-item-button">
+                                        <div class="icon"><i class="icon-layers"></i></div>
                                         <div class="text">Orders</div>
                                     </a>
-<!--                                     <ul class="sub-menu">
+                                    <ul class="sub-menu">
                                         <li class="sub-menu-item">
                                             <a href="{{route('admin.orders')}}" class="">
                                                 <div class="text">Orders</div>
                                             </a>
                                         </li>
                                         <li class="sub-menu-item">
-                                            <a href="order-tracking.html" class="">
-                                                <div class="text">Order tracking</div>
+                                            <a href="{{ route('admin.pending-orders') }}" class="">
+                                                <div class="text">Pending Orders</div>
                                             </a>
                                         </li>
-                                    </ul> -->
+                                        <li class="sub-menu-item">
+                                            <a href="{{ route('admin.rejected-orders') }}" class="">
+                                                <div class="text">Rejected Orders</div>
+                                            </a>
+                                        </li>
+                                        <li class="sub-menu-item">
+                                            <a href="{{ route('admin.cancelled-orders') }}" class="">
+                                                <div class="text">Canceled Orders</div>
+                                            </a>
+                                        </li>
+                                        <li class="sub-menu-item">
+                                            <a href="{{ route('admin.processing-orders') }}" class="">
+                                                <div class="text">Processing Orders</div>
+                                            </a>
+                                        </li>
+                                        <li class="sub-menu-item">
+                                            <a href="{{ route('admin.delivered-orders') }}" class="">
+                                                <div class="text">Delivered Orders</div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <!-- <li class="menu-item">
                                     <a href="slider.html" class="">
@@ -186,7 +206,59 @@
 
                             </div>
                             <div class="header-grid">
-
+                                @if(isset($recentOrders) && $recentOrders->count() > 0)
+                                <div class="popup-wrap message type-header">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="header-item">
+                                                <span class="text-tiny" style="background-color: #483d34;">{{ $recentOrders->count() }}</span>
+                                                <i class="icon-bell"></i>
+                                            </span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton2">
+                                            <li>
+                                                <h6>Recent Orders</h6>
+                                            </li>
+                                            @foreach($recentOrders as $order)
+                                            <li>
+                                                <div class="message-item item-{{ $loop->index + 1 }}">
+                                                    <div>
+                                                        <div class="body-title-2">Order #{{ $order->id }} - {{ $order->name }}</div>
+                                                        <div class="text-tiny">₱{{ number_format($order->total, 2) }} | Status: {{ ucfirst($order->status) }}</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                            <li>
+                                                <a href="{{ route('admin.orders') }}" class="tf-button w-full">View all orders</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="popup-wrap message type-header">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="header-item">
+                                                <span class="text-tiny" style="background-color: #483d34;">0</span>
+                                                <i class="icon-bell"></i>
+                                            </span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton2">
+                                            <li>
+                                                <div class="message-item">
+                                                    <div>
+                                                        <div class="text-tiny">No recent orders</div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('admin.orders') }}" class="tf-button w-full">View all orders</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                @endif
 
                                 <div class="popup-wrap user type-header">
                                     <div class="dropdown">
@@ -227,21 +299,22 @@
     <script src="{{ asset('js/main.js') }}"></script>
 
     <script>
-        $(function(){
-            $("#search-input").on("keyup",function(){
+        $(function() {
+            $("#search-input").on("keyup", function() {
                 var searchQuery = $(this).val();
-                if(searchQuery.length > 2)
-                {
+                if (searchQuery.length > 2) {
                     $.ajax({
                         type: "GET",
                         url: "{{route('admin.search')}}",
-                        data: {query: searchQuery},
-                        dataType : 'json',
-                        success:function(data){
+                        data: {
+                            query: searchQuery
+                        },
+                        dataType: 'json',
+                        success: function(data) {
                             $("#box-content-search").html('');
-                            $.each(data,function(index,item){
+                            $.each(data, function(index, item) {
                                 var url = "{{route('admin.product.edit',['id'=>'product_id'])}}";
-                                var link = url.replace('product_id',item.id);
+                                var link = url.replace('product_id', item.id);
 
                                 $("#box-content-search").append(`
                                     <li>
@@ -269,105 +342,6 @@
             });
         });
     </script>
-
-    <!-- <script>
-        (function($) {
-
-            var tfLineChart = (function() {
-
-                var chartBar = function() {
-
-                    var options = {
-                        series: [{
-                                name: 'Total',
-                                data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
-                            }, {
-                                name: 'Pending',
-                                data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
-                            },
-                            {
-                                name: 'Delivered',
-                                data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
-                            }, {
-                                name: 'Canceled',
-                                data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
-                            }
-                        ],
-                        chart: {
-                            type: 'bar',
-                            height: 325,
-                            toolbar: {
-                                show: false,
-                            },
-                        },
-                        plotOptions: {
-                            bar: {
-                                horizontal: false,
-                                columnWidth: '10px',
-                                endingShape: 'rounded'
-                            },
-                        },
-                        dataLabels: {
-                            enabled: false
-                        },
-                        legend: {
-                            show: false,
-                        },
-                        colors: ['#2377FC', '#FFA500', '#078407', '#FF0000'],
-                        stroke: {
-                            show: false,
-                        },
-                        xaxis: {
-                            labels: {
-                                style: {
-                                    colors: '#212529',
-                                },
-                            },
-                            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        },
-                        yaxis: {
-                            show: false,
-                        },
-                        fill: {
-                            opacity: 1
-                        },
-                        tooltip: {
-                            y: {
-                                formatter: function(val) {
-                                    return "$ " + val + ""
-                                }
-                            }
-                        }
-                    };
-
-                    chart = new ApexCharts(
-                        document.querySelector("#line-chart-8"),
-                        options
-                    );
-                    if ($("#line-chart-8").length > 0) {
-                        chart.render();
-                    }
-                };
-
-                return {
-                    init: function() {},
-
-                    load: function() {
-                        chartBar();
-                    },
-                    resize: function() {},
-                };
-            })();
-
-            jQuery(document).ready(function() {});
-
-            jQuery(window).on("load", function() {
-                tfLineChart.load();
-            });
-
-            jQuery(window).on("resize", function() {});
-        })(jQuery);
-    </script> -->
     @stack("scripts")
 </body>
 

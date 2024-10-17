@@ -10,7 +10,7 @@
         text-transform: uppercase;
     }
 
-    .btn-back:hover{
+    .btn-back:hover {
         color: #b08968;
     }
 
@@ -89,7 +89,7 @@
     .table-striped td:nth-child(1) {
         min-width: 250px;
         padding-bottom: 7px;
-        
+
     }
 
     .pname {
@@ -126,7 +126,7 @@
                     </div>
                     <div class="table-responsive">
                         @if(Session::has('status'))
-                            <p class="alert alert-success">{{Session::get('status')}}</p>
+                        <p class="alert alert-success">{{Session::get('status')}}</p>
                         @endif
                         <table class="table table-striped table-bordered table-striped table-transaction">
                             <thead>
@@ -149,12 +149,16 @@
                                 <tr>
                                     <th>Order Status</th>
                                     <td colspan="5">
-                                        @if($order->status == 'delivered')
-                                        <span class="badge bg-success">Delivered</span>
+                                        @if($order->status == 'rejected')
+                                        <span class="badge bg-danger">Rejected</span>
                                         @elseif($order->status == 'canceled')
                                         <span class="badge bg-danger">Canceled</span>
+                                        @elseif($order->status == 'processing')
+                                        <span class="badge bg-warning">Processing</span>
+                                        @elseif($order->status == 'delivered')
+                                        <span class="badge bg-success">Delivered</span>
                                         @else
-                                        <span class="badge bg-warning">Ordered</span>
+                                        <span class="badge bg-warning">Pending</span>
                                         @endif
                                     </td>
                                 </tr>
@@ -179,7 +183,7 @@
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Options</th>
                                     <th class="text-center">Return Status</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -199,7 +203,7 @@
                                     <td class="text-center">{{$item->product->category->name}}</td>
                                     <td class="text-center">{{$item->options}}</td>
                                     <td class="text-center">{{$item->rstatus == 0 ? "No":"Yes"}}</td>
-                                    
+
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -235,7 +239,7 @@
                                 <td>₱{{$order->subtotal}}</td>
                                 <th>Shipping Fee</th>
                                 <td>₱{{$order->tax}}</td>
-                                <th>Status</th>
+                                <!-- <th>Status</th>
                                 <td>
                                     @if($transaction->status == 'approved')
                                     <span class="badge bg-success">Approved</span>
@@ -246,7 +250,7 @@
                                     @else
                                     <span class="badge bg-warning">Pending</span>
                                     @endif
-                                </td>
+                                </td> -->
                             </tr>
                             <tr>
                                 <th>Total</th>
@@ -257,7 +261,7 @@
                         </tbody>
                     </table>
                 </div>
-                @if($order->status=='ordered')
+                @if($order->status=='pending')
                 <div class="wg-box mt-5 text-right">
                     <form action="{{route('user.order.cancel')}}" method="POST">
                         @csrf
