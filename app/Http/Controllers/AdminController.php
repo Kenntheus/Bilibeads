@@ -24,9 +24,9 @@ class AdminController extends Controller
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
 
-    protected function getRecentOrders()
+    public function getRecentOrders()
     {
-        return Order::orderBy('created_at', 'DESC')->take(5)->get();
+        return Order::orderBy('created_at', 'DESC')->take(10)->get();
     }
 
     public function index()

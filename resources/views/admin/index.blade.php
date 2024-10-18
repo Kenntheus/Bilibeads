@@ -229,7 +229,7 @@
                                         @if($order->status == 'rejected')
                                         <span class="badge bg-danger">Rejected</span>
                                         @elseif($order->status == 'canceled')
-                                        <span class="badge bg-danger">Canceled</span>
+                                        <span class="badge bg-danger">Cancelled</span>
                                         @elseif($order->status == 'processing')
                                         <span class="badge bg-warning">Processing</span>
                                         @elseif($order->status == 'delivered')

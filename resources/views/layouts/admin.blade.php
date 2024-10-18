@@ -206,27 +206,29 @@
 
                             </div>
                             <div class="header-grid">
-                                @if(isset($recentOrders) && $recentOrders->count() > 0)
+                                @if(isset($recentOrders) && $recentOrders->where('status', 'pending')->count() > 0)
                                 <div class="popup-wrap message type-header">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="header-item">
-                                                <span class="text-tiny" style="background-color: #483d34;">{{ $recentOrders->count() }}</span>
+                                                <span class="text-tiny" style="background-color: #483d34;">{{ $recentOrders->where('status', 'pending')->count() }}</span>
                                                 <i class="icon-bell"></i>
                                             </span>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton2">
                                             <li>
-                                                <h6>Recent Orders</h6>
+                                                <h6>Notification</h6>
                                             </li>
-                                            @foreach($recentOrders as $order)
+                                            @foreach($recentOrders->where('status', 'pending') as $order)
                                             <li>
-                                                <div class="message-item item-{{ $loop->index + 1 }}">
-                                                    <div>
-                                                        <div class="body-title-2">Order #{{ $order->id }} - {{ $order->name }}</div>
-                                                        <div class="text-tiny">₱{{ number_format($order->total, 2) }} | Status: {{ ucfirst($order->status) }}</div>
+                                                <a href="{{ route('admin.order.details', ['order_id' => $order->id]) }}">
+                                                    <div class="message-item item-{{ $loop->index + 1 }}">
+                                                        <div>
+                                                            <div class="body-title-2">Order #{{ $order->id }} - {{ $order->name }}</div>
+                                                            <div class="text-tiny">₱{{ number_format($order->total, 2) }} | Status: {{ ucfirst($order->status) }}</div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </li>
                                             @endforeach
                                             <li>
@@ -248,7 +250,7 @@
                                             <li>
                                                 <div class="message-item">
                                                     <div>
-                                                        <div class="text-tiny">No recent orders</div>
+                                                        <div class="text-tiny">No pending orders</div>
                                                     </div>
                                                 </div>
                                             </li>
