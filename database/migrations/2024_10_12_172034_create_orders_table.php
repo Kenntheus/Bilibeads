@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('city');
             $table->string('state');
+            $table->string('barangay');
             $table->string('country');
             $table->string('zip');
             $table->string('type')->default('home');

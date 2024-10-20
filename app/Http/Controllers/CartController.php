@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Surfsidemedia\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
 use App\Models\Transaction;
 
 class CartController extends Controller
@@ -73,26 +72,34 @@ class CartController extends Controller
     public function place_an_order(Request $request)
     {
         $user_id = Auth::user()->id;
+        $address = Address::where('user_id', $user_id)->where('isdefault', true)->first();
 
-        $request->validate([
-            'name' => 'required|max:100',
-            'phone' => 'required|numeric|digits:10',
-            'zip' => 'required|numeric|digits:4',
-            'state' => 'required',
-            'city' => 'required',
-            'address' => 'required',
-        ]);
+        if (!$address || $request->has('name')) {
+            $request->validate([
+                'name' => 'required|max:100',
+                'phone' => 'required|numeric|digits:10',
+                'state' => 'required',
+                'city' => 'required',
+                'barangay' => 'required',
+                'zip' => 'required|numeric|digits:4',
+            ]);
 
-        $address = (object) [
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'zip' => $request->zip,
-            'state' => $request->state,
-            'city' => $request->city,
-            'address' => $request->address,
-            'country' => 'Philippines',
-        ];
+            if (!$address) {
+                $address = new Address();
+                $address->user_id = $user_id;
+            }
 
+            $address->name = $request->name;
+            $address->phone = $request->phone;
+            $address->state = $request->state;
+            $address->city = $request->city;
+            $address->barangay = $request->barangay;
+            $address->zip = $request->zip;
+            $address->address = $request->address;
+            $address->country = 'Philippines';
+            $address->isdefault = true;
+            $address->save();
+        }
 
         $this->setAmountforCheckout();
 
@@ -104,10 +111,11 @@ class CartController extends Controller
         $order->name = $address->name;
         $order->phone = $address->phone;
         $order->address = $address->address;
-        $order->city = $address->city;
         $order->state = $address->state;
-        $order->country = $address->country;
+        $order->city = $address->city;
+        $order->barangay = $request->barangay;
         $order->zip = $address->zip;
+        $order->country = $address->country;
         $order->save();
 
         foreach (Cart::instance('cart')->content() as $item) {
@@ -132,6 +140,7 @@ class CartController extends Controller
 
         return redirect()->route('cart.order.confirmation');
     }
+
     public function setAmountforCheckout()
     {
         if (!Cart::instance('cart')->content()->count() > 0) {

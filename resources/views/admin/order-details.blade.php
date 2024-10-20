@@ -137,7 +137,7 @@
                     <p>{{$order->name}}</p>
                     <p>{{$order->address}}</p>
                     <p>{{$order->state}}</p>
-                    <p>{{$order->city}}, {{$order->country}}</p>
+                    <p>{{$order->city}}, {{$order->barangay}}, {{$order->country}}</p>
                     <p>{{$order->zip}}</p>
                     <br>
                     <p>Mobile : {{$order->phone}}</p>
@@ -154,18 +154,6 @@
                         <td>₱{{$order->subtotal}}</td>
                         <th>Shipping Fee</th>
                         <td>₱{{$order->tax}}</td>
-                        <!-- <th>Status</th>
-                        <td>
-                            @if($transaction->status == 'approved')
-                                <span class="badge bg-success">Approved</span>
-                            @elseif($transaction->status == 'declined')
-                                <span class="badge bg-danger">Declined</span>
-                            @elseif($transaction->status == 'refunded')
-                                <span class="badge bg-secondary">Refunded</span>
-                            @else
-                                <span class="badge bg-warning">Pending</span>
-                            @endif
-                        </td> -->
                     </tr>
                     <tr>
                         <th>Total</th>

@@ -71,7 +71,6 @@ class UserController extends Controller
 
     public function updatePassword(Request $request): RedirectResponse
     {
-        // Custom validation rules for the password update
         $request->validate([
             'current_password' => [
                 'required',

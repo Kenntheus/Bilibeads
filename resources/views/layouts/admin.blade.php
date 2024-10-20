@@ -30,13 +30,6 @@
     <div id="wrapper">
         <div id="page" class="">
             <div class="layout-wrap">
-
-                <!-- <div id="preload" class="preload-container">
-    <div class="preloading">
-        <span></span>
-    </div>
-</div> -->
-
                 <div class="section-menu-left">
                     <div class="box-logo">
                         <a href="{{route('admin.index')}}" id="site-logo-inner">
@@ -63,6 +56,24 @@
                             <ul class="menu-list">
                                 <li class="menu-item has-children">
                                     <a href="javascript:void(0);" class="menu-item-button">
+                                        <div class="icon"><i class="icon-layers"></i></div>
+                                        <div class="text">Category</div>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="sub-menu-item">
+                                            <a href="{{route('admin.category.add')}}" class="">
+                                                <div class="text">New Category</div>
+                                            </a>
+                                        </li>
+                                        <li class="sub-menu-item">
+                                            <a href="{{route('admin.categories')}}" class="">
+                                                <div class="text">Categories</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item has-children">
+                                    <a href="javascript:void(0);" class="menu-item-button">
                                         <div class="icon"><i class="icon-shopping-cart"></i></div>
                                         <div class="text">Products</div>
                                     </a>
@@ -81,26 +92,7 @@
                                 </li>
                                 <li class="menu-item has-children">
                                     <a href="javascript:void(0);" class="menu-item-button">
-                                        <div class="icon"><i class="icon-layers"></i></div>
-                                        <div class="text">Category</div>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="sub-menu-item">
-                                            <a href="{{route('admin.category.add')}}" class="">
-                                                <div class="text">New Category</div>
-                                            </a>
-                                        </li>
-                                        <li class="sub-menu-item">
-                                            <a href="{{route('admin.categories')}}" class="">
-                                                <div class="text">Categories</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="menu-item has-children">
-                                    <a href="javascript:void(0);" class="menu-item-button">
-                                        <div class="icon"><i class="icon-layers"></i></div>
+                                        <div class="icon"><i class="icon-file-plus"></i></div>
                                         <div class="text">Orders</div>
                                     </a>
                                     <ul class="sub-menu">
@@ -136,32 +128,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!-- <li class="menu-item">
-                                    <a href="slider.html" class="">
-                                        <div class="icon"><i class="icon-image"></i></div>
-                                        <div class="text">Slider</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="coupons.html" class="">
-                                        <div class="icon"><i class="icon-grid"></i></div>
-                                        <div class="text">Coupons</div>
-                                    </a>
-                                </li>
-
-                                <li class="menu-item">
-                                    <a href="users.html" class="">
-                                        <div class="icon"><i class="icon-user"></i></div>
-                                        <div class="text">User</div>
-                                    </a>
-                                </li>
-
-                                <li class="menu-item">
-                                    <a href="settings.html" class="">
-                                        <div class="icon"><i class="icon-settings"></i></div>
-                                        <div class="text">Settings</div>
-                                    </a>
-                                </li> -->
                                 <li class="menu-item">
                                     <form method="POST" action={{route('logout')}} id="logout-form">
                                         @csrf
@@ -176,7 +142,6 @@
                     </div>
                 </div>
                 <div class="section-content-right">
-
                     <div class="header-dashboard">
                         <div class="wrap">
                             <div class="header-left">
@@ -188,8 +153,6 @@
                                 <div class="button-show-hide">
                                     <i class="icon-menu-left"></i>
                                 </div>
-
-
                                 <form class="form-search flex-grow">
                                     <fieldset class="name">
                                         <input type="text" placeholder="Search here..." class="show-search" name="name" id="search-input"
@@ -203,7 +166,6 @@
                                         </ul>
                                     </div>
                                 </form>
-
                             </div>
                             <div class="header-grid">
                                 @if(isset($recentOrders) && $recentOrders->where('status', 'pending')->count() > 0)

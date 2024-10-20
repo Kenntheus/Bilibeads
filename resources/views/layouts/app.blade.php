@@ -196,6 +196,9 @@
                 d="M9.00007 5.34314C6.98339 5.34314 5.34277 6.98353 5.34277 8.99999C5.34277 11.0169 6.98339 12.6575 9.00007 12.6575C11.0168 12.6575 12.6574 11.0169 12.6574 8.99999C12.6574 6.98353 11.0168 5.34314 9.00007 5.34314ZM9.00007 11.3206C7.72038 11.3206 6.67951 10.2795 6.67951 8.99977C6.67951 7.72052 7.72038 6.67965 9.00007 6.67965C10.2796 6.67965 11.3206 7.72052 11.3206 8.99977C11.3206 10.2795 10.2796 11.3206 9.00007 11.3206Z"
                 fill="currentColor" />
         </symbol>
+        <symbol id="icon_bell" viewBox="0 0 24 24">
+            <path d="M12 22c1.1 0 2-.9 2-2H10c0 1.1.9 2 2 2zm6-6V9c0-3.07-1.64-5.64-4.5-6.32V2c0-.83-.67-1.5-1.5-1.5S10.5 1.17 10.5 2v.68C7.64 3.36 6 5.93 6 9v7l-2 2v1h16v-1l-2-2zm-2 1H8V9c0-2.21 1.79-4 4-4s4 1.79 4 4v8z" />
+        </symbol>
         <symbol id="icon_gift" viewBox="0 0 45 45">
             <g clip-path="url(#clip0_103_552)">
                 <path
@@ -355,9 +358,6 @@
                         <li class="navigation__item">
                             <a href="about.html" class="navigation__link">About</a>
                         </li>
-                        <!-- <li class="navigation__item">
-                            <a href="contact.html" class="navigation__link">Contact</a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -370,9 +370,6 @@
                     </svg>
                     <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">My Account</span>
                 </div>
-
-
-
                 <ul class="container social-links list-unstyled d-flex flex-wrap mb-0">
                     <li>
                         <a href="#" class="footer__social-link d-block ps-0">
@@ -384,34 +381,9 @@
                     </li>
                     <li>
                         <a href="#" class="footer__social-link d-block">
-                            <svg class="svg-icon svg-icon_twitter" width="14" height="13" viewBox="0 0 14 13"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_twitter" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__social-link d-block">
                             <svg class="svg-icon svg-icon_instagram" width="14" height="13"
                                 viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#icon_instagram" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__social-link d-block">
-                            <svg class="svg-icon svg-icon_youtube" width="16" height="11" viewBox="0 0 16 11"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.0117 1.8584C14.8477 1.20215 14.3281 0.682617 13.6992 0.518555C12.5234 0.19043 7.875 0.19043 7.875 0.19043C7.875 0.19043 3.19922 0.19043 2.02344 0.518555C1.39453 0.682617 0.875 1.20215 0.710938 1.8584C0.382812 3.00684 0.382812 5.46777 0.382812 5.46777C0.382812 5.46777 0.382812 7.90137 0.710938 9.07715C0.875 9.7334 1.39453 10.2256 2.02344 10.3896C3.19922 10.6904 7.875 10.6904 7.875 10.6904C7.875 10.6904 12.5234 10.6904 13.6992 10.3896C14.3281 10.2256 14.8477 9.7334 15.0117 9.07715C15.3398 7.90137 15.3398 5.46777 15.3398 5.46777C15.3398 5.46777 15.3398 3.00684 15.0117 1.8584ZM6.34375 7.68262V3.25293L10.2266 5.46777L6.34375 7.68262Z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer__social-link d-block">
-                            <svg class="svg-icon svg-icon_pinterest" width="14" height="15"
-                                viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_pinterest" />
                             </svg>
                         </a>
                     </li>
@@ -419,8 +391,6 @@
             </div>
         </nav>
     </div>
-
-
     <header id="header" class="header header-fullwidth header-transparent-bg">
         <div class="container">
             <div class="header-desk header-desk_type_1">
@@ -433,18 +403,12 @@
 
                 <nav class="navigation">
                     <ul class="navigation__list list-unstyled d-flex">
-                        {{-- <li class="navigation__item">
-                            <a href="{{ route('home.index') }}" class="navigation__link">Home</a>
-                        </li> --}}
                         <li class="navigation__item">
                             <a href="{{ route('shop.index') }}" class="navigation__link">Shop</a>
                         </li>
                         <li class="navigation__item">
                             <a href="{{url('about')}}" class="navigation__link">About</a>
                         </li>
-                        <!-- <li class="navigation__item">
-                            <a href="contact.html" class="navigation__link">Contact</a>
-                        </li> -->
                     </ul>
                 </nav>
 
@@ -459,7 +423,6 @@
                                 <i class="btn-icon btn-close-lg"></i>
                             </a>
                         </div>
-
                         <div class="search-popup js-hidden-content">
                             <form action="#" method="GET" class="search-field container">
                                 <p class="text-uppercase text-secondary fw-medium mb-4">What are you looking for?</p>
@@ -559,14 +522,6 @@
                                 </svg>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="#" class="footer__social-link d-block">
-                                <svg class="svg-icon svg-icon_twitter" width="14" height="13"
-                                    viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_twitter" />
-                                </svg>
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="https://www.instagram.com/_bilibeads/" class="footer__social-link d-block">
                                 <svg class="svg-icon svg-icon_instagram" width="14" height="13"
@@ -575,68 +530,17 @@
                                 </svg>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="#" class="footer__social-link d-block">
-                                <svg class="svg-icon svg-icon_youtube" width="16" height="11"
-                                    viewBox="0 0 16 11" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.0117 1.8584C14.8477 1.20215 14.3281 0.682617 13.6992 0.518555C12.5234 0.19043 7.875 0.19043 7.875 0.19043C7.875 0.19043 3.19922 0.19043 2.02344 0.518555C1.39453 0.682617 0.875 1.20215 0.710938 1.8584C0.382812 3.00684 0.382812 5.46777 0.382812 5.46777C0.382812 5.46777 0.382812 7.90137 0.710938 9.07715C0.875 9.7334 1.39453 10.2256 2.02344 10.3896C3.19922 10.6904 7.875 10.6904 7.875 10.6904C7.875 10.6904 12.5234 10.6904 13.6992 10.3896C14.3281 10.2256 14.8477 9.7334 15.0117 9.07715C15.3398 7.90137 15.3398 5.46777 15.3398 5.46777C15.3398 5.46777 15.3398 3.00684 15.0117 1.8584ZM6.34375 7.68262V3.25293L10.2266 5.46777L6.34375 7.68262Z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__social-link d-block">
-                                <svg class="svg-icon svg-icon_pinterest" width="14" height="15"
-                                    viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_pinterest" />
-                                </svg>
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
-
-                <!-- <div class="footer-column footer-menu mb-4 mb-lg-0">
-                    <h6 class="sub-menu__title text-uppercase">Company</h6>
-                    <ul class="sub-menu__list list-unstyled">
-                        <li class="sub-menu__item"><a href="about-2.html" class="menu-link menu-link_us-s">About Us</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Careers</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Affiliates</a></li>
-                        <li class="sub-menu__item"><a href="blog_list1.html" class="menu-link menu-link_us-s">Blog</a></li>
-                        <li class="sub-menu__item"><a href="contact-2.html" class="menu-link menu-link_us-s">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column footer-menu mb-4 mb-lg-0">
-                    <h6 class="sub-menu__title text-uppercase">Shop</h6>
-                    <ul class="sub-menu__list list-unstyled">
-                        <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">New Arrivals</a></li>
-                        <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Accessories</a></li>
-                        <li class="sub-menu__item"><a href="shop4.html" class="menu-link menu-link_us-s">Men</a></li>
-                        <li class="sub-menu__item"><a href="shop5.html" class="menu-link menu-link_us-s">Women</a></li>
-                        <li class="sub-menu__item"><a href="shop1.html" class="menu-link menu-link_us-s">Shop All</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column footer-menu mb-4 mb-lg-0">
-                    <h6 class="sub-menu__title text-uppercase">Help</h6>
-                    <ul class="sub-menu__list list-unstyled">
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Customer Service</a></li>
-                        <li class="sub-menu__item"><a href="account_dashboard.html" class="menu-link menu-link_us-s">My Account</a>
-                        </li>
-                        <li class="sub-menu__item"><a href="store_location.html" class="menu-link menu-link_us-s">Find a Store</a>
-                        </li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Legal & Privacy</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Gift Card</a></li>
-                    </ul>
-                </div> -->
 
                 <div class="footer-column footer-menu mb-4 mb-lg-0">
                     <h6 class="sub-menu__title text-uppercase">Categories</h6>
                     <ul class="sub-menu__list list-unstyled">
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Bracelet</a>
+                        <li class="sub-menu__item"><a href="{{route ('shop.index')}}" class="menu-link menu-link_us-s">Bracelet</a>
                         </li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Ring</a></li>
-                        <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Necklace</a>
+                        <li class="sub-menu__item"><a href="{{route ('shop.index')}}" class="menu-link menu-link_us-s">Ring</a>
+                        </li>
+                        <li class="sub-menu__item"><a href="{{route ('shop.index')}}" class="menu-link menu-link_us-s">Necklace</a>
                         </li>
                     </ul>
                 </div>
@@ -646,11 +550,6 @@
         <div class="footer-bottom">
             <div class="container d-md-flex align-items-center">
                 <span class="footer-copyright me-auto">©2024 Bilibeads</span>
-                <div class="footer-settings d-md-flex align-items-center">
-                    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a
-                        href="terms-conditions.html">Terms &amp;
-                        Conditions</a>
-                </div>
             </div>
         </div>
     </footer>

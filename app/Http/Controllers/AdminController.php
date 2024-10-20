@@ -99,8 +99,9 @@ class AdminController extends Controller
 
     public function category_edit($id)
     {
+        $recentOrders = $this->getRecentOrders();
         $category = Category::find($id);
-        return view('admin.category-edit', compact('category'));
+        return view('admin.category-edit', compact('category','recentOrders'));
     }
 
     //Category Edit Function
@@ -233,9 +234,10 @@ class AdminController extends Controller
 
     public function product_edit($id)
     {
+        $recentOrders = $this->getRecentOrders();
         $product = Product::find($id);
         $categories = Category::select('id', 'name')->orderBy('name')->get();
-        return view('admin.product-edit', compact('product', 'categories'));
+        return view('admin.product-edit', compact('product', 'categories','recentOrders'));
     }
 
     public function product_update(Request $request)
@@ -338,16 +340,18 @@ class AdminController extends Controller
 
     public function orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.orders', compact('orders'));
+        return view('admin.orders', compact('orders','recentOrders'));
     }
 
     public function order_details($order_id)
     {
+        $recentOrders = $this->getRecentOrders();
         $order = Order::find($order_id);
         $orderItems = OrderItem::where('order_id', $order_id)->orderBy('id')->paginate(12);
         $transaction = Transaction::where('order_id', $order_id)->first();
-        return view('admin.order-details', compact('order', 'orderItems', 'transaction'));
+        return view('admin.order-details', compact('order', 'orderItems', 'transaction','recentOrders'));
     }
 
     public function update_order_status(Request $request)
@@ -364,12 +368,6 @@ class AdminController extends Controller
             $order->delivered_date = Carbon::now();
         }
         $order->save();
-
-        /* if ($request->order_status == 'delivered') {
-            $transaction = Transaction::where('order_id', $request->order_id)->first();
-            $transaction->status = 'approved';
-            $transaction->save();
-        } */
         return back()->with("status", "Status changed successfully!");
     }
 
@@ -382,31 +380,36 @@ class AdminController extends Controller
 
     public function pending_orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::where('status', 'pending')->orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.pending-orders', compact('orders'));
+        return view('admin.pending-orders', compact('orders','recentOrders'));
     }
 
     public function rejected_orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::where('status', 'rejected')->orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.rejected-orders', compact('orders'));
+        return view('admin.rejected-orders', compact('orders','recentOrders'));
     }
 
     public function canceled_orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::where('status', 'canceled')->orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.cancelled-orders', compact('orders'));
+        return view('admin.cancelled-orders', compact('orders','recentOrders'));
     }
 
     public function processing_orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::where('status', 'processing')->orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.processing-orders', compact('orders'));
+        return view('admin.processing-orders', compact('orders','recentOrders'));
     }
 
     public function delivered_orders()
     {
+        $recentOrders = $this->getRecentOrders();
         $orders = Order::where('status', 'delivered')->orderBy('created_at', 'DESC')->paginate(12);
-        return view('admin.delivered-orders', compact('orders'));
+        return view('admin.delivered-orders', compact('orders','recentOrders'));
     }
 }
