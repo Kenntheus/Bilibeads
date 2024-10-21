@@ -77,7 +77,7 @@ class CartController extends Controller
         if (!$address || $request->has('name')) {
             $request->validate([
                 'name' => 'required|max:100',
-                'phone' => 'required|numeric|digits:10',
+                'phone' => ['required', 'regex:/^\+63[0-9]{10}$/'],
                 'state' => 'required',
                 'city' => 'required',
                 'barangay' => 'required',

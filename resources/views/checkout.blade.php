@@ -76,24 +76,27 @@
                         <div class="col-md-4">
                             <div class="form-group my-3">
                                 <label for="state">Province *</label>
-                                <input type="text" class="form-control" name="state" required
-                                    value="{{ $address ? $address->state : old('state') }}">
+                                <select name="state" class="form-control" required>
+                                    <option value="">Select Province</option>
+                                </select>
                                 @error('state')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group my-3">
                                 <label for="city">Town / City *</label>
-                                <input type="text" class="form-control" name="city" required
-                                    value="{{ $address ? $address->city : old('city') }}">
+                                <select name="city" class="form-control" required>
+                                    <option value="">Select City</option>
+                                </select>
                                 @error('city')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group my-3">
                                 <label for="barangay">Barangay *</label>
-                                <input type="text" class="form-control" name="barangay" required
-                                    value="{{ $address ? $address->barangay : old('barangay') }}">
+                                <select name="barangay" class="form-control" required>
+                                    <option value="">Select Barangay</option>
+                                </select>
                                 @error('barangay')<span class="text-danger">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -178,7 +181,7 @@
 </main>
 
 <script>
-    document.getElementById('editAddressBtn').addEventListener('click', function() {
+    document.getElementById('editAddressBtn')?.addEventListener('click', function() {
         var addressForm = document.getElementById('addressForm');
         var currentAddress = document.getElementById('currentAddress');
         var editButton = document.getElementById('editAddressBtn');
@@ -189,5 +192,77 @@
         addressForm.classList.remove('d-none');
         editButton.style.display = 'none';
     });
+
+    let provinces = [];
+    let cities = [];
+    let barangays = [];
+
+    fetch('/assets/ph-province-list.json')
+        .then(response => response.json())
+        .then(data => {
+            provinces = data;
+            populateProvinces();
+            console.log('Provinces fetched', provinces);
+        });
+
+    fetch('/assets/ph-cities-list.json')
+        .then(response => response.json())
+        .then(data => {
+            cities = data;
+            console.log('Cities fetched', cities);
+        });
+
+    fetch('/assets/ph-brgy-list.json')
+        .then(response => response.json())
+        .then(data => {
+            barangays = data;
+            console.log('Barangays fetched', barangays);
+        });
+
+    function populateProvinces() {
+        const provinceSelect = document.querySelector('select[name="state"]');
+        provinceSelect.innerHTML = '<option value="">Select Province</option>';
+        provinces.forEach(province => {
+            const option = document.createElement('option');
+            option.text = province.province;
+            provinceSelect.add(option);
+        });
+    }
+
+    document.querySelector('select[name="state"]').addEventListener('change', function() {
+        const selectedProvince = this.value;
+        console.log('Province selected:', selectedProvince);
+        populateCities(selectedProvince);
+    });
+
+    document.querySelector('select[name="city"]').addEventListener('change', function() {
+        const selectedCity = this.value;
+        console.log('City selected:', selectedCity);
+        populateBarangays(selectedCity);
+    });
+    function populateCities(province) {
+        const citySelect = document.querySelector('select[name="city"]');
+        citySelect.innerHTML = '<option value="">Select City</option>';
+        const filteredCities = cities.filter(city => city.province === province);
+
+        filteredCities.forEach(city => {
+            const option = document.createElement('option');
+            option.text = city.city;
+            citySelect.add(option);
+        });
+        const barangaySelect = document.querySelector('select[name="barangay"]');
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+    }
+    function populateBarangays(city) {
+        const barangaySelect = document.querySelector('select[name="barangay"]');
+        barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+        const filteredBarangays = barangays.filter(brgy => brgy.municipality === city);
+
+        filteredBarangays.forEach(barangay => {
+            const option = document.createElement('option');
+            option.text = barangay.barangay;
+            barangaySelect.add(option);
+        });
+    }
 </script>
 @endsection

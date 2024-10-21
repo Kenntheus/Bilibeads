@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https:/}}/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     @stack('styles')
 </head>
 
@@ -295,6 +296,67 @@
         #box-content-search .product-item {
             margin-bottom: 10px;
         }
+
+        .popup-wrap {
+            position: relative;
+        }
+
+        .header-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notification-count {
+            background-color: #483d34;
+            color: #fff;
+            padding: 0.3em 0.6em;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            width: 250px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-item {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        .body-title-2 {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .text-tiny {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .tf-button {
+            display: block;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #483d34;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .tf-button:hover {
+            background-color: #66504d;
+        }
+
+        
     </style>
     <div class="header-mobile header_sticky">
         <div class="container d-flex align-items-center h-100">
@@ -447,7 +509,42 @@
                             </form>
                         </div>
                     </div>
-
+                    <!-- <div class="header-tools__item hover-container">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background: none; border: none;">
+                                <span class="header-item position-relative" style="display: inline-block; vertical-align: middle;">
+                                    <i class="fa fa-bell" style="font-size: 1rem; vertical-align: middle;"></i>
+                                    <span class="notification-count position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                                        3
+                                    </span>
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end has-content" aria-labelledby="dropdownMenuButton2">
+                                <li>
+                                    <h6>Notification</h6>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="message-item">
+                                            <div class="body-title-2">Sample Notification 1</div>
+                                            <div class="text-tiny">Message preview for notification 1</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="message-item">
+                                            <div class="body-title-2">Sample Notification 2</div>
+                                            <div class="text-tiny">Message preview for notification 2</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tf-button w-full">View all notifications</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
                     @guest
                     <div class="header-tools__item hover-container">
                         <a href="{{ route('login') }}" class="header-tools__item">

@@ -88,7 +88,7 @@
                             <th class="text-center">Price</th>
                             <th class="text-center">Quantity</th>
                             <th class="text-center">Category</th>
-                            <th class="text-center">Options</th>
+                            <!-- <th class="text-center">Options</th> -->
                             <th class="text-center">Return Status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -109,7 +109,7 @@
                             <td class="text-center">₱{{$item->price}}</td>
                             <td class="text-center">{{$item->quantity}}</td>
                             <td class="text-center">{{$item->product->category->name}}</td>
-                            <td class="text-center">{{$item->options}}</td>
+                            <!-- <td class="text-center">{{$item->options}}</td> -->
                             <td class="text-center">{{$item->rstatus == 0 ? "No":"Yes"}}</td>
                             <td class="text-center">
                                 <div class="list-icon-function view-icon">
@@ -136,8 +136,8 @@
                 <div class="my-account__address-item__detail">
                     <p>{{$order->name}}</p>
                     <p>{{$order->address}}</p>
-                    <p>{{$order->state}}</p>
-                    <p>{{$order->city}}, {{$order->barangay}}, {{$order->country}}</p>
+                    <p>{{$order->country}}</p>
+                    <p>{{$order->barangay}}, {{$order->city}}, {{$order->state}}</p>
                     <p>{{$order->zip}}</p>
                     <br>
                     <p>Mobile : {{$order->phone}}</p>
@@ -173,19 +173,30 @@
                 <input type="hidden" name="order_id" value="{{$order->id}}">
                 <div class="row">
                     <div class="col-md-3">
+                        @if($order->status == 'canceled' || $order->status == 'delivered' || $order->status == 'rejected')
+                        <p>The order is {{$order->status}}. Status changes are no longer allowed.</p>
+                        @else
                         <div class="select">
                             <select id="order_status" name="order_status">
+                                @if($order->status == 'pending')
                                 <option value="pending" {{$order->status == 'pending' ? "selected":""}}>Pending</option>
                                 <option value="rejected" {{$order->status == 'rejected' ? "selected":""}}>Rejected</option>
                                 <option value="canceled" {{$order->status == 'canceled' ? "selected":""}}>Canceled</option>
                                 <option value="processing" {{$order->status == 'processing' ? "selected":""}}>Processing</option>
                                 <option value="delivered" {{$order->status == 'delivered' ? "selected":""}}>Delivered</option>
+                                @elseif($order->status == 'processing')
+                                <option value="processing" {{$order->status == 'processing' ? "selected":""}}>Processing</option>
+                                <option value="delivered" {{$order->status == 'delivered' ? "selected":""}}>Delivered</option>
+                                @endif
                             </select>
                         </div>
+                        @endif
                     </div>
+                    @if($order->status != 'canceled' && $order->status != 'delivered' && $order->status != 'rejected')
                     <div class="col-md-3">
                         <button type="submit" class="btn btn-primary tf-button w208">Update Status</button>
                     </div>
+                    @endif
                 </div>
             </form>
         </div>

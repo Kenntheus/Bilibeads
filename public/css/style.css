@@ -2866,6 +2866,7 @@ a:hover, a:focus {
 }
 .tf-button.w208 {
   width: 208px;
+  border-color: #483d34;
 }
 .tf-button.w230 {
   width: 230px;
@@ -4167,7 +4168,6 @@ select.h40 {
   right: 0;
   width: 16px;
   height: 16px;
-  background-color: #2275fc;
   border-radius: 50%;
   z-index: -1;
   animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;

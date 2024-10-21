@@ -83,16 +83,12 @@
                             <td>{{$product->quantity}}</td>
                             <td>
                                 <div class="list-icon-function">
-                                    <div class="item eye">
-                                        <i class="icon-eye"></i>
-                                    </div>
                                     <a href="{{route('admin.product.edit',['id'=>$product->id])}}">
                                         <div class="item edit">
                                             <i class="icon-edit-3"></i>
                                         </div>
                                     </a>
                                     </div>
-
                                     <form action="{{route('admin.product.delete',['id'=>$product->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')

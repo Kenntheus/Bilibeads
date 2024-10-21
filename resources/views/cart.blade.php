@@ -97,7 +97,7 @@
                     <form action="{{route('cart.empty')}}" method="POST">
                         @csrf
                         @method('DELETE')
-                    <button class="btn btn-light" type="submit">CLEAR CART</button>
+                    <button class="btn btn-primary" type="submit">CLEAR CART</button>
                     </form>
                 </div>
             </div>
@@ -144,7 +144,6 @@
 @endsection
 
 @push('scripts')
-
 <script>
     $(function() {
         $(".qty-control__increase").on("click", function() {
@@ -160,5 +159,4 @@
         });
     })
 </script>
-
 @endpush
