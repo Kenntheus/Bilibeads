@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <main class="pt-90">
     <div class="mb-4 pb-4"></div>
@@ -29,10 +30,6 @@
                             <td>
                                 <div class="shopping-cart__product-item__detail">
                                     <h4>{{$item->name}}</h4>
-                                    <!-- <ul class="shopping-cart__product-item__options">
-                                        <li>Color: Yellow</li>
-                                        <li>Size: L</li>
-                                    </ul> -->
                                 </div>
                             </td>
                             <td>
@@ -42,6 +39,7 @@
                                 {{$item->qty}}
                             </td>
                             <td>
+                                @if($item->model->stock_status != 'outofstock') <!-- Check if the item is in stock -->
                                 <div class="row">
                                     <div class="col-6">
                                         <form method="POST" action="{{route('wishlist.move.to.cart',['rowId'=>$item->rowId])}}">
@@ -50,6 +48,7 @@
                                         </form>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="col-6">
                                     <form method="POST" action="{{route('wishlist.item.remove',['rowId'=>$item->rowId])}}" id="remove-item-{{$item->id}}">
                                         @csrf

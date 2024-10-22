@@ -235,87 +235,66 @@
               <div class="swiper-container background-img js-swiper-slider" data-settings='{"resizeObserver": true}'>
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}"><img loading="lazy" src="{{asset('uploads/products')}}/{{$product->image}}" width="330"
-                        height="400" alt="{{$product->name}}" class="pc__img"></a>
+                    <a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}">
+                      <img loading="lazy" src="{{asset('uploads/products')}}/{{$product->image}}" width="330" height="400" alt="{{$product->name}}" class="pc__img">
+                    </a>
                   </div>
-                  <<!-- div class="swiper-slide">
-                    <a href="details.html"><img loading="lazy" src="assets/images/products/product_1-1.jpg"
-                        width="330" height="400" alt="Cropped Faux leather Jacket" class="pc__img"></a>
-                </div> -->
+                </div>
               </div>
-              <!-- <span class="pc__img-prev"><svg width="7" height="11" viewBox="0 0 7 11"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <use href="#icon_prev_sm" />
-                </svg></span>
-              <span class="pc__img-next"><svg width="7" height="11" viewBox="0 0 7 11"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <use href="#icon_next_sm" />
-                </svg></span> -->
-            </div>
-            @if(Cart::instance('cart')->content()->where('id',$product->id)->count()>0)
-            <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>
-            @else
-            <form name="addtocart-form" method="post" action="{{route('cart.add')}}">
-              @csrf
-              <input type="hidden" name="id" value="{{$product->id}}">
-              <input type="hidden" name="quantity" value="1">
-              <input type="hidden" name="name" value="{{$product->name}}">
-              <input type="hidden" name="price" value="{{$product->sale_price == '' ? $product->sale_price : $product->sale_price}}">
-              <button
-                type="submit" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
-                data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
-            </form>
-            @endif
-          </div>
+              @php
+              $wishlistInstance = Cart::instance('wishlist');
+              $wishlistItem = $wishlistInstance->content()->where('id', $product->id)->first();
+              $cartItem = Cart::instance('cart')->content()->where('id', $product->id)->first();
+              @endphp
 
-          <div class="pc__info position-relative">
-            <p class="pc__category">{{$product->category->name}}</p>
-            <h6 class="pc__title"><a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}">{{$product->name}}</a></h6>
-            <div class="product-card__price d-flex">
-              <span class="money price">
-                @if($product->sale_price)
-                <!-- <s>${{$product->sale_price}}</s> -->₱{{$product->sale_price}}
-                @else
-                ₱{{$product->sale_price}}
-                @endif
-              </span>
+              @if($product->stock_status == 'outofstock')
+              @if($wishlistItem)
+              <a href="{{route('wishlist.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Wishlist</a>
+              @else
+              <form method="POST" action="{{route('wishlist.add')}}" class="pc__action-form">
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="price" value="{{$product->sale_price}}">
+                <input type="hidden" name="quantity" value="1">
+                <button class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
+                  title="Add To Wishlist">Add To Wishlist</button>
+              </form>
+              @endif
+              @else
+              @if($cartItem)
+              <a href="{{route('cart.index')}}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Go to Cart</a>
+              @else
+              <form name="addtocart-form" method="post" action="{{route('cart.add')}}" class="pc__action-form">
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="price" value="{{$product->sale_price}}">
+                <button type="submit" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium"
+                  title="Add To Cart">Add To Cart</button>
+              </form>
+              @endif
+              @endif
             </div>
-            @if(Cart::instance('wishlist')->content()->where('id',$product->id)->count() > 0)
-            <form method="POST" action="{{route('wishlist.item.remove',['rowId'=>Cart::instance('wishlist')->content()->where('id',$product->id)->first()->rowId])}}">
-            @csrf
-            @method('DELETE')
-            <button class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist filled-heart"
-              title="Remove from Wishlist">
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <use href="#icon_heart" />
-              </svg>
-            </button>
-            </form>
-            @else
-            <form method="POST" action="{{route('wishlist.add')}}">
-              @csrf
-              <input type="hidden" name="id" value="{{$product->id}}">
-              <input type="hidden" name="name" value="{{$product->name}}">
-              <input type="hidden" name="price" value="{{$product->sale_price}}">
-              <input type="hidden" name="quantity" value="1">
-              <button class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                title="Add To Wishlist">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <use href="#icon_heart" />
-                </svg>
-              </button>
-            </form>
-            @endif
+            <div class="pc__info position-relative">
+              <p class="pc__category">{{$product->category->name}}</p>
+              <h6 class="pc__title"><a href="{{route('shop.product.details',['product_slug'=>$product->slug])}}">{{$product->name}}</a></h6>
+              <div class="product-card__price d-flex">
+                <span class="money price">
+                  ₱{{$product->sale_price ?? $product->regular_price}}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+        @endforeach
       </div>
-      @endforeach
-    </div>
-    <div class="divider">
-      <div class="flex item-center justify-between flex-wrap gap10 wgp-pagination">
-        {{$products->withQueryString()->links('pagination::bootstrap-5')}}
+      <div class="divider">
+        <div class="flex item-center justify-between flex-wrap gap10 wgp-pagination">
+          {{$products->withQueryString()->links('pagination::bootstrap-5')}}
+        </div>
       </div>
-    </div>
 
     </div>
   </section>
