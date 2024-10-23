@@ -10,6 +10,7 @@ use Surfsidemedia\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -135,6 +136,7 @@ class CartController extends Controller
         }
 
         Cart::instance('cart')->destroy();
+        DB::table('user_cart')->where('user_id', Auth::id())->delete();
         Session::forget('checkout');
         Session::put('order_id', $order->id);
 
@@ -162,5 +164,32 @@ class CartController extends Controller
             return view('order-confirmation', compact('order'));
         }
         return redirect()->route('cart.index');
+    }
+
+    public function saveCartToDatabase()
+    {
+        $user_id = Auth::id();
+        foreach (Cart::instance('cart')->content() as $item) {
+            DB::table('user_cart')->updateOrInsert(
+                ['user_id' => $user_id, 'product_id' => $item->id],
+                ['name' => $item->name, 'quantity' => $item->qty, 'price' => $item->price]
+            );
+        }
+    }
+
+    public function empty_cart_on_logout()
+    {
+        $this->saveCartToDatabase();
+        Cart::instance('cart')->destroy();
+    }
+
+    public function loadCartFromDatabase()
+    {
+        $user_id = Auth::id();
+        $savedCartItems = DB::table('user_cart')->where('user_id', $user_id)->get();
+
+        foreach ($savedCartItems as $item) {
+            Cart::instance('cart')->add($item->product_id, $item->name, $item->quantity, $item->price)->associate('App\Models\Product');
+        }
     }
 }
