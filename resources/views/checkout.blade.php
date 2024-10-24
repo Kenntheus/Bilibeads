@@ -238,10 +238,13 @@
         const provinceSelect = document.querySelector('select[name="state"]');
         
         provinceSelect.innerHTML = '<option value="">Select Province</option>';
+        console.log("province testses", provinces)
+        console.log(address)
         provinces.forEach(province => {
             const option = document.createElement('option');
             option.text = province.province;
-            if(address.state === province.province){
+            
+            if(address && address.state === province.province){
                 option.selected = true;
             }
             provinceSelect.add(option);
@@ -265,7 +268,7 @@
         filteredCities.forEach(city => {
             const option = document.createElement('option');
             option.text = city.city;
-            if(address.city === city.city){
+            if(address && address.city === city.city){
                 option.selected = true;
             }
             citySelect.add(option);
@@ -284,7 +287,7 @@
         filteredBarangays.forEach(barangay => {
             const option = document.createElement('option');
             option.text = barangay.barangay;
-            if(address.barangay === barangay.barangay){
+            if(address && address.barangay === barangay.barangay){
                 option.selected = true;
             }
             barangaySelect.add(option);
