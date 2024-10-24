@@ -179,8 +179,16 @@
         </form>
     </section>
 </main>
+<input type="hidden" id="addressData" value="{{ json_encode($address)}}">
 
 <script>
+    try {
+        var addressDataElement = document.getElementById('addressData');
+        var address = JSON.parse(addressDataElement.value);
+        console.log('Address Data:', address);
+    } catch (e) {
+        console.error('Error parsing JSON:', e);
+    }
     document.getElementById('editAddressBtn')?.addEventListener('click', function() {
         var addressForm = document.getElementById('addressForm');
         var currentAddress = document.getElementById('currentAddress');
@@ -209,6 +217,9 @@
         .then(response => response.json())
         .then(data => {
             cities = data;
+            if(address){
+                populateCities(address.state);
+            }  
             console.log('Cities fetched', cities);
         });
 
@@ -216,19 +227,26 @@
         .then(response => response.json())
         .then(data => {
             barangays = data;
+                
+            if(address){
+                populateBarangays(address.city);
+            }  
             console.log('Barangays fetched', barangays);
         });
 
     function populateProvinces() {
         const provinceSelect = document.querySelector('select[name="state"]');
+        
         provinceSelect.innerHTML = '<option value="">Select Province</option>';
         provinces.forEach(province => {
             const option = document.createElement('option');
             option.text = province.province;
+            if(address.state === province.province){
+                option.selected = true;
+            }
             provinceSelect.add(option);
         });
     }
-
     document.querySelector('select[name="state"]').addEventListener('change', function() {
         const selectedProvince = this.value;
         console.log('Province selected:', selectedProvince);
@@ -244,13 +262,18 @@
         const citySelect = document.querySelector('select[name="city"]');
         citySelect.innerHTML = '<option value="">Select City</option>';
         const filteredCities = cities.filter(city => city.province === province);
-
         filteredCities.forEach(city => {
             const option = document.createElement('option');
             option.text = city.city;
+            if(address.city === city.city){
+                option.selected = true;
+            }
             citySelect.add(option);
         });
         const barangaySelect = document.querySelector('select[name="barangay"]');
+        if(address){
+            provinceSelect.innerHTML = `<option value="" Selected>${address.barangay}</option>`;
+        }
         barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
     }
     function populateBarangays(city) {
@@ -261,8 +284,11 @@
         filteredBarangays.forEach(barangay => {
             const option = document.createElement('option');
             option.text = barangay.barangay;
+            if(address.barangay === barangay.barangay){
+                option.selected = true;
+            }
             barangaySelect.add(option);
         });
-    }
+    } 
 </script>
 @endsection
